@@ -1,0 +1,13 @@
+../Core/Src/cia/305/CO_LSSslave.c:36:13:CO_LSSslave_serviceSwitchStateGlobal	32	static
+../Core/Src/cia/305/CO_LSSslave.c:62:13:CO_LSSslave_serviceSwitchStateSelective	32	static
+../Core/Src/cia/305/CO_LSSslave.c:108:13:CO_LSSslave_serviceConfig	48	static
+../Core/Src/cia/305/CO_LSSslave.c:224:13:CO_LSSslave_serviceInquire	32	static
+../Core/Src/cia/305/CO_LSSslave.c:266:13:CO_LSSslave_serviceIdent	48	static
+../Core/Src/cia/305/CO_LSSslave.c:340:13:CO_LSSslave_receive	32	static
+../Core/Src/cia/305/CO_LSSslave.c:374:18:CO_LSSslave_init	40	static
+../Core/Src/cia/305/CO_LSSslave.c:446:6:CO_LSSslave_initCheckBitRateCallback	24	static
+../Core/Src/cia/305/CO_LSSslave.c:459:6:CO_LSSslave_initActivateBitRateCallback	24	static
+../Core/Src/cia/305/CO_LSSslave.c:472:6:CO_LSSslave_initCfgStoreCallback	24	static
+../Core/Src/cia/305/CO_LSSslave.c:485:6:CO_LSSslave_process	24	static
+../Core/Src/cia/305/CO_LSSslave.c:501:16:CO_LSSslave_getState	16	static
+../Core/Src/cia/305/CO_LSSslave.c:512:8:CO_LSSslave_LEDprocess	24	static

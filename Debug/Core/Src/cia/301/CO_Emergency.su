@@ -1,0 +1,12 @@
+D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:798:24:CO_getUint32	24	static
+D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:822:20:CO_setUint32	16	static
+../Core/Src/cia/301/CO_Emergency.c:42:13:CO_EM_receive	56	static
+../Core/Src/cia/301/CO_Emergency.c:73:27:CO_ODF_1003	32	static
+../Core/Src/cia/301/CO_Emergency.c:120:27:CO_ODF_1014	32	static
+../Core/Src/cia/301/CO_Emergency.c:138:18:CO_EM_init	48	static
+../Core/Src/cia/301/CO_Emergency.c:230:6:CO_EM_initCallbackPre	24	static
+../Core/Src/cia/301/CO_Emergency.c:245:6:CO_EM_initCallbackRx	16	static
+../Core/Src/cia/301/CO_Emergency.c:261:6:CO_EM_process	72	static
+../Core/Src/cia/301/CO_Emergency.c:388:6:CO_errorReport	40	static
+../Core/Src/cia/301/CO_Emergency.c:451:6:CO_errorReset	40	static
+../Core/Src/cia/301/CO_Emergency.c:512:8:CO_isError	24	static

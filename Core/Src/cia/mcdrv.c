@@ -18,7 +18,7 @@
 #include "FreeRTOS.h"
 #include "queue.h"
 #include "log.h"
-#include "motion.h"
+#include "nmotion.h"
 #include "mcdrv.h"
 
 #define MOTION_UNKNOWN_MODE   0
@@ -161,9 +161,6 @@ void MCD_uploadStatus(uint16_t timeDifference_us,  bool_t syncWas, uint16_t stat
 
 void MCD_broadState(uint16_t timeDifference_us, bool_t syncWas)
 {
-
-	uint32_t timerNext;
-
 	BaseType_t result;
 	StatusMsgItem_t item;
     result = xQueueReceive(g_StatusMsgQueue, &item, 0);

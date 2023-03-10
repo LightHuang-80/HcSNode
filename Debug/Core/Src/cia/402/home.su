@@ -1,0 +1,8 @@
+../Core/Src/cia/402/home.c:54:6:HOME_reset	4	static
+../Core/Src/cia/402/home.c:60:6:HOME_setProfile	24	static
+../Core/Src/cia/402/home.c:68:6:HOME_Init	32	static
+../Core/Src/cia/402/home.c:80:6:HOME_setFinishedCallback	16	static
+../Core/Src/cia/402/home.c:85:6:HOME_finish	16	static
+../Core/Src/cia/402/home.c:97:6:HOME_active	8	static
+../Core/Src/cia/402/home.c:108:10:HOME_exec	40	static
+../Core/Src/cia/402/home.c:160:6:HOME_OnSwitchSignal	40	static,ignoring_inline_asm

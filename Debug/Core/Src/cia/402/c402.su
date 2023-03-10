@@ -1,0 +1,4 @@
+../Core/Src/cia/402/c402.c:84:6:DS402_OnNodeStatusChanged	4	static
+../Core/Src/cia/402/c402.c:89:6:DS402_SetNodeControlWords	16	static
+../Core/Src/cia/402/c402.c:94:6:DS402_SetNodeStatusWord	16	static
+../Core/Src/cia/402/c402.c:99:6:DS402_SetNodePosition	16	static

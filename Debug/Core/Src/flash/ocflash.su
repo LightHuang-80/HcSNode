@@ -1,0 +1,2 @@
+../Core/Src/flash/ocflash.c:18:9:Flash_WriteData	72	static
+../Core/Src/flash/ocflash.c:59:9:Flash_ReadData	40	static

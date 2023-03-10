@@ -12,7 +12,7 @@
 
 #include "main.h"
 #include "usart.h"
-#include "stepper.h"
+#include "nstepper.h"
 
 #define BYE_CMD      0x1F
 #define STEPPER_CMD  0x1E

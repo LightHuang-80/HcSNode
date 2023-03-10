@@ -21,11 +21,11 @@
 #include "c402.h"
 #include "c402def.h"
 #include "dsstate.h"
-#include "stepper.h"
+#include "nstepper.h"
 #include "home.h"
 #include "FreeRTOS.h"
 #include "queue.h"
-#include "motion.h"
+#include "nmotion.h"
 #include "mcdrv.h"
 
 typedef void (*pHomeFinishedCallback)(int32_t);

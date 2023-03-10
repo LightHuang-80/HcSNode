@@ -11,7 +11,7 @@
 #include "c402def.h"
 #include "dspp.h"
 
-#include "motion.h"
+#include "nmotion.h"
 #include "log.h"
 
 typedef void (*pTargetReachedCallback)(int32_t);

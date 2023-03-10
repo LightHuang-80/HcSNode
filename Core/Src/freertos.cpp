@@ -21,6 +21,7 @@
 /* Includes ------------------------------------------------------------------*/
 #include "FreeRTOS.h"
 #include "task.h"
+#include "timers.h"
 #include "main.h"
 #include "cmsis_os.h"
 
@@ -31,16 +32,17 @@
 #include "can.h"
 #include "as5048a.h"
 #include "round.h"
-#include "stepper.h"
+#include "nstepper.h"
 #include "TMCStepper.h"
 #include "fsusart.h"
 #include "message.h"
-#include "motion.h"
+#include "nmotion.h"
 #include "log.h"
 #include "CANOpen.h"
 #include "cannode.h"
 #include "c402.h"
 #include "cmd.h"
+#include "PosProfile.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -53,7 +55,7 @@
 extern "C" void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 /* USER CODE END PD */
 
-#define TARGET_JOINT 3
+#define TARGET_JOINT 1
 
 #if (TARGET_JOINT == 1)
   #define STALL_VALUE             63 // [-64..63]
@@ -62,10 +64,11 @@ extern "C" void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
   uint8_t  g_MicroSteps = 32;
   float    g_EncoderRatio = 32.0f;
 
-  uint16_t g_WorkCurrent = 2000; // motor rms current
+  uint16_t g_WorkCurrent = 1600; // motor rms current
   GPIO_PinState g_EndStopTriggerState = GPIO_PIN_RESET; // Endstop trigger state
   uint32_t g_EndStopTriggerMode = GPIO_MODE_IT_FALLING;
 
+  uint32_t g_MotionStepTimespace = 2;	// unit ms
 #elif (TARGET_JOINT == 2)
   #define STALL_VALUE             63 // [-64..63]
   #define ENCODER_ReadAngle_Retry 15
@@ -76,6 +79,7 @@ extern "C" void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
   uint16_t g_WorkCurrent = 2200; // motor rms current
   GPIO_PinState g_EndStopTriggerState = GPIO_PIN_RESET; // Endstop trigger state
   uint32_t g_EndStopTriggerMode = GPIO_MODE_IT_RISING;
+  uint32_t g_MotionStepTimespace = 4;
 
 #elif (TARGET_JOINT == 3)
   #define STALL_VALUE             63 // [-64..63]
@@ -89,6 +93,8 @@ extern "C" void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
   uint16_t g_WorkCurrent = 1600; // motor rms current
   GPIO_PinState g_EndStopTriggerState = GPIO_PIN_RESET; // Endstop trigger state
   uint32_t g_EndStopTriggerMode = GPIO_MODE_IT_RISING;
+  uint32_t g_MotionStepTimespace = 4;
+
 #elif (TARGET_JOINT == 4)
   #define  STALL_VALUE     240 // [0..255]
   #define  DRIVER_ADDRESS 0b00 // TMC2209 Driver address according to MS1 and MS2
@@ -102,7 +108,7 @@ extern "C" void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
   uint32_t      g_EndStopTriggerMode = GPIO_MODE_IT_FALLING;
   GPIO_PinState g_EndStopTriggerState = GPIO_PIN_RESET; // Endstop trigger state
   uint16_t      g_WorkCurrent = 1500;  // 1600ma
-
+  uint32_t g_MotionStepTimespace = 4;
 #endif
 
 volatile int32_t  g_IncSteps;
@@ -111,6 +117,8 @@ volatile uint16_t g_AbsAngle;
 QueueHandle_t g_MotionMsgQueue = NULL;
 QueueHandle_t g_TargetPosQueue = NULL;
 QueueHandle_t g_StatusMsgQueue = NULL;
+
+xTimerHandle motorProcessTimer;
 
 extern Node_DriveProfile_t g_NodeDriveProfile;
 extern CAN_HandleTypeDef hcan1;
@@ -182,6 +190,8 @@ void EncoderTaskMain(void *argument);
 void MotorTaskMain(void *argument);
 void CanCommTaskMain(void *argument);
 
+void MotorProcessCB(TimerHandle_t xTimer);
+
 /**
   * @brief  FreeRTOS initialization
   * @param  None
@@ -205,6 +215,11 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
+  motorProcessTimer = xTimerCreate("MotorProcessTimer",
+		  	  	  	  	  	  	  pdMS_TO_TICKS( g_MotionStepTimespace ),
+								  pdTRUE,
+								  0,
+								  MotorProcessCB);
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
@@ -252,7 +267,7 @@ void DefaultTaskMain(void *argument)
   /* Infinite loop */
   for(;;)
   {
-	MT_process_v2(g_IncSteps);
+	//MT_process_v3(g_IncSteps);
 	osDelay(4);
   }
   /* USER CODE END DefaultTaskMain */
@@ -271,7 +286,7 @@ void LedTaskMain(void *argument)
   /* Infinite loop */
   for(;;)
   {
-    osDelay(1);
+    osDelay(16);
   }
   /* USER CODE END LedTaskMain */
 }
@@ -329,11 +344,15 @@ void EncoderTaskMain(void *argument)
 	}
 
 	//LOG_Print(LOG_InfoLevel, "curinc: %d, angle: %d\n", g_IncSteps, g_AbsAngle);
-	osDelay(4);
+	osDelay(2);
   }
   /* USER CODE END EncoderTaskMain */
 }
 
+void MotorProcessCB(TimerHandle_t xTimer)
+{
+	MT_process_v3(g_MotionStepTimespace);
+}
 /* USER CODE BEGIN Header_UITaskMain */
 /**
 * @brief Function implementing the uartTask thread.
@@ -358,6 +377,7 @@ void MotorTaskMain(void *argument)
   osDelay(10);
 
   TMC5160Stepper driver(0, 0.075, 0, 0, 0, -1);
+
   driver.GSTAT(0);
 
   int32_t chopconf = driver.CHOPCONF();
@@ -381,16 +401,17 @@ void MotorTaskMain(void *argument)
 
   driver.chm(0); // Standard mode (spreadCycle)
 
-  /* CHOPPER_DEFAULT_24V, (4,5,0), tuned to: 2,6,7*/
-  driver.toff(5); // 0: shutdown, 1: only with tbl>=2, DcStep: no less than 3
-  driver.hend(8);
-  driver.hstrt(6);
+  /* CHOPPER_DEFAULT_24V, (4,5,0), tuned to: 4,5,2*/
+  driver.toff(4); // 0: shutdown, 1: only with tbl>=2, DcStep: no less than 3
+  driver.hend(6);
+  driver.hstrt(2);
 
   driver.tbl(2); // blank_time(36)
 
   driver.pwm_freq(1);
-  driver.TPOWERDOWN(2);
-  driver.TPWMTHRS(4000);
+  driver.TPOWERDOWN(10);
+  //driver.pwm_autoscale(true);
+  driver.TPWMTHRS(2000);
 
   driver.blank_time(24);
 
@@ -434,11 +455,21 @@ void MotorTaskMain(void *argument)
   /* Register TMC driver*/
   JNT_registerDriver(&driver);
 
+  MotionMsgItem_t item;
+  item.position = 24800;
+  xQueueSend(g_MotionMsgQueue, &item, 0);
+
+  printf("Init Pos: %ld\n", g_IncSteps);
+
+  xTimerStart(motorProcessTimer, 0);
+
   /* Infinite loop */
   for(;;)
   {
 	//JNT_processMsg();
-    osDelay(10);
+	  //uint32_t ticks = 5;
+	  //MT_process_v3(ticks);
+	  osDelay(4);
   }
   /* USER CODE END UITaskMain */
 }

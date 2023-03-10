@@ -1,0 +1,8 @@
+D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:798:24:CO_getUint32	24	static
+../Core/Src/cia/301/CO_SYNC.c:40:13:CO_SYNC_receive	32	static
+../Core/Src/cia/301/CO_SYNC.c:87:27:CO_ODF_1005	56	static
+../Core/Src/cia/301/CO_SYNC.c:172:27:CO_ODF_1006	32	static
+../Core/Src/cia/301/CO_SYNC.c:205:27:CO_ODF_1019	40	static
+../Core/Src/cia/301/CO_SYNC.c:247:18:CO_SYNC_init	48	static
+../Core/Src/cia/301/CO_SYNC.c:336:6:CO_SYNC_initCallbackPre	24	static
+../Core/Src/cia/301/CO_SYNC.c:350:18:CO_SYNC_process	40	static

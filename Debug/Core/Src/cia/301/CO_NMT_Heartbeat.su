@@ -1,0 +1,6 @@
+../Core/Src/cia/301/CO_NMT_Heartbeat.c:39:13:CO_NMT_receive	32	static
+../Core/Src/cia/301/CO_NMT_Heartbeat.c:93:18:CO_NMT_init	48	static
+../Core/Src/cia/301/CO_NMT_Heartbeat.c:192:6:CO_NMT_initCallbackPre	24	static
+../Core/Src/cia/301/CO_NMT_Heartbeat.c:207:6:CO_NMT_initCallbackChanged	16	static
+../Core/Src/cia/301/CO_NMT_Heartbeat.c:222:20:CO_NMT_process	40	static
+../Core/Src/cia/301/CO_NMT_Heartbeat.c:434:24:CO_NMT_getInternalState	16	static

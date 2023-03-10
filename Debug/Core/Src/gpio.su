@@ -1,0 +1,2 @@
+../Core/Src/gpio.c:31:6:pinMode	48	static
+../Core/Src/gpio.c:63:6:MX_GPIO_Init	48	static

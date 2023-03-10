@@ -1,0 +1,74 @@
+../Core/Src/stepper/tmc/CHOPCONF.cpp:7:10:uint32_t TMC2130Stepper::CHOPCONF()	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:10:6:void TMC2130Stepper::CHOPCONF(uint32_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:15:6:void TMC2130Stepper::toff(uint8_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:16:6:virtual void TMC2130Stepper::hstrt(uint8_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:17:6:virtual void TMC2130Stepper::hend(uint8_t)	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:19:6:void TMC2130Stepper::disfdcc(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:20:6:void TMC2130Stepper::rndtf(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:21:6:void TMC2130Stepper::chm(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:22:6:virtual void TMC2130Stepper::tbl(uint8_t)	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:23:6:virtual void TMC2130Stepper::vsense(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:24:6:void TMC2130Stepper::vhighfs(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:25:6:void TMC2130Stepper::vhighchm(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:26:6:void TMC2130Stepper::sync(uint8_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:27:6:virtual void TMC2130Stepper::mres(uint8_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:28:6:void TMC2130Stepper::intpol(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:29:6:void TMC2130Stepper::dedge(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:30:6:void TMC2130Stepper::diss2g(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:32:9:uint8_t TMC2130Stepper::toff()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:33:9:virtual uint8_t TMC2130Stepper::hstrt()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:34:9:virtual uint8_t TMC2130Stepper::hend()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:36:7:bool TMC2130Stepper::disfdcc()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:37:7:bool TMC2130Stepper::rndtf()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:38:7:bool TMC2130Stepper::chm()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:39:9:virtual uint8_t TMC2130Stepper::tbl()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:40:7:virtual bool TMC2130Stepper::vsense()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:41:7:bool TMC2130Stepper::vhighfs()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:42:7:bool TMC2130Stepper::vhighchm()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:43:9:uint8_t TMC2130Stepper::sync()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:44:9:virtual uint8_t TMC2130Stepper::mres()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:45:7:bool TMC2130Stepper::intpol()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:46:7:bool TMC2130Stepper::dedge()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:47:7:bool TMC2130Stepper::diss2g()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:49:6:void TMC5160Stepper::diss2vs(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:50:6:void TMC5160Stepper::tpfd(uint8_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:51:6:bool TMC5160Stepper::diss2vs()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:52:9:uint8_t TMC5160Stepper::tpfd()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:54:6:void TMC2208Stepper::CHOPCONF(uint32_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:58:10:uint32_t TMC2208Stepper::CHOPCONF()	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:61:6:void TMC2208Stepper::toff(uint8_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:62:6:virtual void TMC2208Stepper::hstrt(uint8_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:63:6:virtual void TMC2208Stepper::hend(uint8_t)	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:64:6:virtual void TMC2208Stepper::tbl(uint8_t)	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:65:6:virtual void TMC2208Stepper::vsense(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:66:6:virtual void TMC2208Stepper::mres(uint8_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:67:6:void TMC2208Stepper::intpol(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:68:6:void TMC2208Stepper::dedge(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:69:6:void TMC2208Stepper::diss2g(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:70:6:void TMC2208Stepper::diss2vs(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:72:9:uint8_t TMC2208Stepper::toff()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:73:9:virtual uint8_t TMC2208Stepper::hstrt()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:74:9:virtual uint8_t TMC2208Stepper::hend()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:75:9:virtual uint8_t TMC2208Stepper::tbl()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:76:7:virtual bool TMC2208Stepper::vsense()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:77:9:virtual uint8_t TMC2208Stepper::mres()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:78:7:bool TMC2208Stepper::intpol()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:79:7:bool TMC2208Stepper::dedge()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:80:7:bool TMC2208Stepper::diss2g()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:81:7:bool TMC2208Stepper::diss2vs()	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:85:10:uint32_t TMC2660Stepper::CHOPCONF()	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:86:6:void TMC2660Stepper::CHOPCONF(uint32_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:91:6:void TMC2660Stepper::toff(uint8_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:95:6:void TMC2660Stepper::hstrt(uint8_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:96:6:void TMC2660Stepper::hend(uint8_t)	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:97:6:void TMC2660Stepper::hdec(uint8_t)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:98:6:void TMC2660Stepper::rndtf(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:99:6:void TMC2660Stepper::chm(bool)	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:100:6:void TMC2660Stepper::tbl(uint8_t)	24	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:102:9:uint8_t TMC2660Stepper::toff()	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:103:9:uint8_t TMC2660Stepper::hstrt()	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:104:9:uint8_t TMC2660Stepper::hend()	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:105:9:uint8_t TMC2660Stepper::hdec()	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:106:6:bool TMC2660Stepper::rndtf()	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:107:6:bool TMC2660Stepper::chm()	16	static
+../Core/Src/stepper/tmc/CHOPCONF.cpp:108:9:uint8_t TMC2660Stepper::tbl()	16	static

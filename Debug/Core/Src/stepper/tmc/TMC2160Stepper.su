@@ -1,0 +1,24 @@
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:4:1:TMC2160Stepper::TMC2160Stepper(uint16_t, float, int8_t)	24	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:6:1:TMC2160Stepper::TMC2160Stepper(uint16_t, float, uint16_t, uint16_t, uint16_t, int8_t)	40	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:9:1:TMC2160Stepper::TMC2160Stepper(uint16_t, uint16_t, uint16_t, uint16_t, int8_t)	40	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:13:6:void TMC2160Stepper::begin()	16	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:30:6:void TMC2160Stepper::defaults()	16	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:67:6:void TMC2160Stepper::rms_current(uint16_t)	48	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:95:6:void TMC2160Stepper::rms_current(uint16_t, float)	24	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:99:10:uint16_t TMC2160Stepper::cs2rms(uint8_t)	32	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:111:10:uint16_t TMC2160Stepper::rms_current()	16	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:113:6:void TMC2160Stepper::push()	16	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:133:11:uint32_t TMC2160Stepper::IOIN()	16	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:136:9:bool TMC2160Stepper::refl_step()	24	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:137:9:bool TMC2160Stepper::refr_dir()	24	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:138:9:bool TMC2160Stepper::encb_dcen_cfg4()	24	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:139:9:bool TMC2160Stepper::enca_dcin_cfg5()	24	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:140:9:bool TMC2160Stepper::drv_enn()	24	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:141:9:bool TMC2160Stepper::dco_cfg6()	24	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:142:9:uint8_t TMC2160Stepper::version()	24	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:145:9:uint8_t TMC2160Stepper::GLOBAL_SCALER()	16	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:146:6:void TMC2160Stepper::GLOBAL_SCALER(uint8_t)	16	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:152:10:uint16_t TMC2160Stepper::OFFSET_READ()	16	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:155:10:uint32_t TMC2160Stepper::PWM_SCALE()	16	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:158:9:uint8_t TMC2160Stepper::pwm_scale_sum()	24	static
+../Core/Src/stepper/tmc/TMC2160Stepper.cpp:159:10:uint16_t TMC2160Stepper::pwm_scale_auto()	24	static

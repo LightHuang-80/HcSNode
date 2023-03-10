@@ -1,0 +1,14 @@
+D:/projects/hcbot/HcSNode/Core/Src/cia/301\CO_SDOserver.h:798:24:CO_getUint32	24	static
+../Core/Src/cia/301/CO_HBconsumer.c:39:13:CO_HBcons_receive	32	static
+../Core/Src/cia/301/CO_HBconsumer.c:67:27:CO_ODF_1016	32	static
+../Core/Src/cia/301/CO_HBconsumer.c:97:18:CO_HBconsumer_init	40	static
+../Core/Src/cia/301/CO_HBconsumer.c:152:18:CO_HBconsumer_initEntry	56	static
+../Core/Src/cia/301/CO_HBconsumer.c:219:6:CO_HBconsumer_initCallbackPre	32	static
+../Core/Src/cia/301/CO_HBconsumer.c:237:6:CO_HBconsumer_initCallbackNmtChanged	24	static
+../Core/Src/cia/301/CO_HBconsumer.c:256:6:CO_HBconsumer_initCallbackHeartbeatStarted	32	static
+../Core/Src/cia/301/CO_HBconsumer.c:275:6:CO_HBconsumer_initCallbackTimeout	32	static
+../Core/Src/cia/301/CO_HBconsumer.c:294:6:CO_HBconsumer_initCallbackRemoteReset	32	static
+../Core/Src/cia/301/CO_HBconsumer.c:314:6:CO_HBconsumer_process	40	static
+../Core/Src/cia/301/CO_HBconsumer.c:453:8:CO_HBconsumer_getIdxByNodeId	24	static
+../Core/Src/cia/301/CO_HBconsumer.c:478:23:CO_HBconsumer_getState	24	static
+../Core/Src/cia/301/CO_HBconsumer.c:493:8:CO_HBconsumer_getNmtState	32	static

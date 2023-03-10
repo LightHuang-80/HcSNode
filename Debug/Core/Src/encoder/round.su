@@ -1,0 +1,6 @@
+../Core/Src/encoder/round.c:27:6:RND_Init	16	static
+../Core/Src/encoder/round.c:45:6:RND_Input	24	static
+../Core/Src/encoder/round.c:92:10:RND_GetHomeAngle	4	static
+../Core/Src/encoder/round.c:100:9:RND_GetCrossAngle	40	static
+../Core/Src/encoder/round.c:159:9:RND_GetRound	16	static
+../Core/Src/encoder/round.c:172:9:RND_GetIncSteps	32	static

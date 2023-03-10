@@ -13,7 +13,7 @@
 #include <string.h>
 
 #include "interpolation.h"
-#include "motion.h"
+#include "nmotion.h"
 #include "c402.h"
 #include "log.h"
 #include "mcdrv.h"

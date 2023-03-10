@@ -1,0 +1,5 @@
+../Core/Src/motion/planner.c:65:14:estimate_acceleration_distance	24	static
+../Core/Src/motion/planner.c:70:14:intersection_distance	24	static
+../Core/Src/motion/planner.c:75:14:final_speed	24	static
+../Core/Src/motion/planner.c:79:17:get_period_inverse	16	static
+../Core/Src/motion/planner.c:83:6:calculate_trapezoid_for_block	72	static

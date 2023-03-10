@@ -12,7 +12,7 @@
 #include "main.h"
 #include "usart.h"
 #include "fsusart.h"
-#include "stepper.h"
+#include "nstepper.h"
 #include "message.h"
 
 // Registed driver
@@ -258,9 +258,7 @@ void JNT_handleComplexMsg(Joint_Msg_t* msg, char *data, size_t len)
     case STEPPER_RUNSTEPS:
     	Stepper_RunSteps(params[0].iv);
     	break;
-    case STEPPER_RUNANGLE:
-    	Stepper_RunAngle(params[0].iv);
-    	break;
+
 	case STEPPER_FEEDBACK:
 		g_enStepperFeedback = params[0].iv;
 		if (g_enStepperFeedback == 1){
