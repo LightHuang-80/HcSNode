@@ -20,6 +20,7 @@
 
 /* Block signals and states (default storage) */
 DW rtDW;
+DW rtBrakeDW;
 
 /* External inputs (root inport signals with default storage) */
 ExtU rtU;
@@ -27,7 +28,9 @@ ExtU rtU;
 /* External outputs (root outports fed by signals with default storage) */
 ExtY rtY;
 
-PosPTiming_T PosPTiming;
+PosPTiming_T  PosPTiming;
+
+PosPPhase_T PosPPhase[2];
 
 /* Real-time model */
 static RT_MODEL rtM_;
@@ -302,17 +305,9 @@ void PosProfile_Step(real32_T curPos)
   rtDW.VelIntegrator_DSTATE += rtU.Ts * rtDW.AcceIntegrator_DSTATE;
 
   /* Correct velocity*/
-  real32_T uv = truncf(rtDW.VelIntegrator_DSTATE);
-  rtDW.VelTrancErr += rtDW.VelIntegrator_DSTATE - uv;
-
-  /* Floating value tranc to UINT32*/
-  if (rtDW.VelTrancErr >= 1.0f){
-	  rtDW.VelIntegrator_DSTATE += 1.0F;
-	  rtDW.VelTrancErr -= 1.0F;
-  }
 
   if (!rtDW.t_not_empty) {
-      rtDW.t = 0.0F;
+      rtDW.t = rtU.Ts / 2.0F;
       rtDW.t_not_empty = true;
   } else {
       rtDW.t += rtU.Ts;
@@ -321,29 +316,36 @@ void PosProfile_Step(real32_T curPos)
   /* MATLAB Function: '<S1>/ppmode' incorporates:
    *  Inport: '<Root>/MaxJerk'
    */
-  if ((rtDW.t >= 0.0F) && (rtDW.t < PosPTiming.Tj1)) {
-	  /*Phase 1*/
-	  jerk = rtU.MaxJerk;
-  } else if ((rtDW.t >= PosPTiming.Tj1) && (rtDW.t < (PosPTiming.Ta - PosPTiming.Tj1))) {
-	  /*Phase 2*/
+
+  if (rtDW.t >= 0.0F && rtDW.t < PosPPhase[0].timing.Tj1){
+	  /* Phase 0 - 1*/
+	  jerk = -1.0f * PosPPhase[0].dir * rtU.MaxJerk;
+  } else if (rtDW.t >= PosPPhase[0].timing.Tj1 && rtDW.t < PosPPhase[0].timing.Ta){
+	  /* Phase 0 - 2*/
+	  jerk = PosPPhase[0].dir * rtU.MaxJerk;
+  } else if ((rtDW.t >= PosPPhase[0].timing.Ta) && (rtDW.t < PosPPhase[0].timing.T + PosPPhase[1].timing.Tj1)) {
+	  /*Phase 1 - 1*/
+	  jerk = PosPPhase[1].dir * rtU.MaxJerk;
+  } else if ((rtDW.t >= PosPPhase[0].timing.T + PosPPhase[1].timing.Tj1) && (rtDW.t < (PosPPhase[0].timing.T + PosPPhase[1].timing.Ta - PosPPhase[1].timing.Tj1))) {
+	  /*Phase 1 - 2*/
 	  jerk = 0.0F;
-  } else if ((rtDW.t >= (PosPTiming.Ta - PosPTiming.Tj1)) && (rtDW.t < PosPTiming.Ta)) {
-	  /*Phase 3*/
-	  jerk = -rtU.MaxJerk;
-  } else if ((rtDW.t >= PosPTiming.Ta) && (rtDW.t < PosPTiming.Ta + PosPTiming.Tv)) {
-	  /*Phase 4*/
+  } else if ((rtDW.t >= (PosPPhase[0].timing.T + PosPPhase[1].timing.Ta - PosPPhase[1].timing.Tj1)) && (rtDW.t < PosPPhase[0].timing.T + PosPPhase[1].timing.Ta)) {
+	  /*Phase 1 - 3*/
+	  jerk = -1.0F * PosPPhase[1].dir * rtU.MaxJerk;
+  } else if ((rtDW.t >= PosPPhase[0].timing.T + PosPPhase[1].timing.Ta) && (rtDW.t < PosPPhase[0].timing.T + PosPPhase[1].timing.Ta + PosPPhase[1].timing.Tv)) {
+	  /*Phase 1 - 4*/
 	  jerk = 0.0F;
-  } else if ((rtDW.t >= (PosPTiming.T - PosPTiming.Td)) && (rtDW.t < (PosPTiming.T - PosPTiming.Td + PosPTiming.Tj2))){
-	  /*Phase 4*/
-	  jerk = -rtU.MaxJerk;
-  } else if ((rtDW.t >= (PosPTiming.T - PosPTiming.Td + PosPTiming.Tj2)) && (rtDW.t < (PosPTiming.T - PosPTiming.Tj2))) {
-	  /*Phase 4*/
+  } else if ((rtDW.t >= (PosPPhase[0].timing.T + PosPPhase[1].timing.T - PosPPhase[1].timing.Td)) && (rtDW.t < (PosPPhase[0].timing.T + PosPPhase[1].timing.T - PosPPhase[1].timing.Td + PosPPhase[1].timing.Tj2))){
+	  /*Phase 1 - 5*/
+	  jerk = -1.0F * PosPPhase[1].dir * rtU.MaxJerk;
+  } else if ((rtDW.t >= (PosPPhase[0].timing.T + PosPPhase[1].timing.T - PosPPhase[1].timing.Td + PosPPhase[1].timing.Tj2)) && (rtDW.t < (PosPPhase[0].timing.T + PosPPhase[1].timing.T - PosPPhase[1].timing.Tj2))) {
+	  /*Phase 1 - 6*/
 	  jerk = 0.0F;
-  } else if (rtDW.t >= (PosPTiming.T - PosPTiming.Tj2) && rtDW.t < PosPTiming.T) {
-	  /*Phase 4*/
-	  jerk = rtU.MaxJerk;
+  } else if (rtDW.t >= (PosPPhase[0].timing.T + PosPPhase[1].timing.T - PosPPhase[1].timing.Tj2) && rtDW.t < PosPPhase[0].timing.T + PosPPhase[1].timing.T) {
+	  /*Phase 1 - 7*/
+	  jerk = PosPPhase[1].dir * rtU.MaxJerk;
   } else {
-	  /*Phase 4*/
+	  /*Phase end*/
 	  jerk = 0.0F;
   }
 
@@ -351,16 +353,16 @@ void PosProfile_Step(real32_T curPos)
   rtDW.AcceIntegrator_DSTATE += rtU.Ts * jerk;
 }
 
-void PosProfile_CalcTimePhase()
+void PosProfile_CalcPhase1Timing(real32_T distance, real32_T curVel, real32_T targetVel, real32_T maxVel, real32_T maxAcce, real32_T jerk)
 {
   real32_T Ta_tmp;
-  real32_T Tv_tmp_tmp;
   real32_T amax;
   real32_T delta;
-  real32_T delta_tmp;
-  real32_T delta_tmp_0;
-  real32_T delta_tmp_1;
-  real32_T delta_tmp_tmp;
+  real32_T jerkp2;
+  real32_T accep2;
+  real32_T accep4;
+  real32_T velsum;   // curVel + targetVel
+  real32_T velminus;
 
   /* MATLAB Function: '<S1>/ppmode' incorporates:
    *  Inport: '<Root>/InitPos'
@@ -372,114 +374,108 @@ void PosProfile_CalcTimePhase()
    *  Inport: '<Root>/TargetVel'
    *  Inport: '<Root>/Ts'
    */
-  amax = rtU.MaxAcce;
+  amax = maxAcce;
 
-  real32_T deltaV0 = rtU.MaxVel - rtU.InitVel;
-  Ta_tmp = rtU.MaxAcce * rtU.MaxAcce;
+  velminus = maxVel - curVel;
+  Ta_tmp = maxAcce * maxAcce;
 
-  if (deltaV0 * rtU.MaxJerk < Ta_tmp) {
-	if (rtU.InitVel > rtU.MaxVel) {
-	  PosPTiming.Tj1 = 0.0F;
-	  PosPTiming.Ta = 0.0F;
+  if (velminus * jerk < Ta_tmp) {
+	if (curVel > maxVel) {
+	  PosPPhase[1].timing.Tj1 = 0.0f;
+	  PosPPhase[1].timing.Ta = 0.0F;
 	} else {
-	  PosPTiming.Tj1 = sqrtf(deltaV0 / rtU.MaxJerk);
-	  PosPTiming.Ta = 2.0F * PosPTiming.Tj1;
+	  PosPPhase[1].timing.Tj1 = sqrtf(velminus / jerk);
+	  PosPPhase[1].timing.Ta = 2.0F * PosPPhase[1].timing.Tj1;
 	}
   } else {
-	  PosPTiming.Tj1 = rtU.MaxAcce / rtU.MaxJerk;
-	  PosPTiming.Ta = deltaV0 / rtU.MaxAcce + PosPTiming.Tj1;
+	  PosPPhase[1].timing.Tj1 = maxAcce / jerk;
+	  PosPPhase[1].timing.Ta = velminus / maxAcce + PosPPhase[1].timing.Tj1;
   }
 
-  real32_T deltaV1 = rtU.MaxVel - rtU.TargetVel;
-  if (deltaV1 * rtU.MaxJerk < Ta_tmp) {
-	  PosPTiming.Tj2 = sqrtf(deltaV1 / rtU.MaxJerk);
-	  PosPTiming.Td = 2.0F * PosPTiming.Tj1;
+  velminus = maxVel - targetVel;
+  if (velminus * jerk < Ta_tmp) {
+	  PosPPhase[1].timing.Tj2 = sqrtf(velminus / jerk);
+	  PosPPhase[1].timing.Td = 2.0F * PosPPhase[1].timing.Tj2;
   } else {
-	  PosPTiming.Tj2 = rtU.MaxAcce / rtU.MaxJerk;
-	  PosPTiming.Td = deltaV1 / rtU.MaxAcce + PosPTiming.Tj2;
+	  PosPPhase[1].timing.Tj2 = maxAcce / jerk;
+	  PosPPhase[1].timing.Td = velminus / maxAcce + PosPPhase[1].timing.Tj2;
   }
 
   /* T = Tv + Ta + Td */
   /* Make sure the targetPos great than initPos
    * assert(rtU.TargetPos > rtU.InitPos);*/
-  Tv_tmp_tmp = rtU.TargetPos - rtU.InitPos;
 
-  PosPTiming.Tv = (Tv_tmp_tmp / rtU.MaxVel - (rtU.InitVel / rtU.MaxVel + 1.0F) * (PosPTiming.Ta / 2.0F))
-	- (rtU.TargetVel / rtU.MaxVel + 1.0F) * (PosPTiming.Td / 2.0F);
+  PosPPhase[1].timing.Tv = (distance / maxVel - (curVel / maxVel + 1.0F) * (PosPPhase[1].timing.Ta / 2.0F))
+	- (targetVel / maxVel + 1.0F) * (PosPPhase[1].timing.Td / 2.0F);
 
-  if (PosPTiming.Tv <= 0.0F) {
+  if (PosPPhase[1].timing.Tv <= 0.0F) {
+
 	  /*Cannot acceed the max velocity*/
-	  PosPTiming.Tv = 0.0F;
-	  delta_tmp = rtU.MaxJerk * rtU.MaxJerk;
-	  delta_tmp_0 = (rtU.InitVel * rtU.InitVel + rtU.TargetVel * rtU.TargetVel) *
-	  2.0F;
-	  delta_tmp_tmp = rtU.InitVel + rtU.TargetVel;
-	  delta_tmp_1 = Tv_tmp_tmp * 4.0F;
-	  delta = (delta_tmp_1 - 2.0F * rtU.MaxAcce / rtU.MaxJerk * delta_tmp_tmp) *
-			  rtU.MaxAcce + (delta_tmp_0 + rt_powf_snf(rtU.MaxAcce, 4.0F) / delta_tmp);
-	  PosPTiming.Tj1 = rtU.MaxAcce / rtU.MaxJerk;
-	  PosPTiming.Td = sqrtf(delta);
-	  Ta_tmp /= rtU.MaxJerk;
-	  PosPTiming.Ta = ((Ta_tmp - 2.0F * rtU.InitVel) + PosPTiming.Td) / 2.0F / rtU.MaxAcce;
-	  PosPTiming.Tj2 = rtU.MaxAcce / rtU.MaxJerk;
-	  PosPTiming.Td = ((Ta_tmp - 2.0F * rtU.TargetVel) + PosPTiming.Td) / 2.0F / rtU.MaxAcce;
+	  PosPPhase[1].timing.Tv = 0.0F;
 
-	  while ((PosPTiming.Ta < 2.0F * PosPTiming.Tj1) || (PosPTiming.Td < 2.0F * PosPTiming.Tj2)) {
-		  amax -= rtU.MaxAcce * 0.1F;
+	  /* Recalc timing*/
+	  jerkp2 = jerk * jerk;
+
+	  real32_T curVelp2 = curVel * curVel;
+	  real32_T targetVelp2 = targetVel * targetVel;
+
+	  velsum = curVel + targetVel;
+
+	  accep2 = maxAcce * maxAcce;
+	  accep4 = accep2 * accep2;
+
+	  delta = (distance * 4.0F - 2.0F * maxAcce / jerk * velsum) *
+			  maxAcce + ((curVelp2 + targetVelp2) * 2.0F + accep4 / jerkp2);
+
+	  PosPPhase[1].timing.Tj1 = maxAcce / jerk;
+	  PosPPhase[1].timing.Td = sqrtf(delta);
+	  Ta_tmp /= jerk;
+	  PosPPhase[1].timing.Ta = ((Ta_tmp - 2.0F * curVel) + PosPPhase[1].timing.Td) / 2.0F / maxAcce;
+	  PosPPhase[1].timing.Tj2 = maxAcce / jerk;
+	  PosPPhase[1].timing.Td = ((Ta_tmp - 2.0F * targetVel) + PosPPhase[1].timing.Td) / 2.0F / maxAcce;
+
+	  real32_T amaxp2 = amax * amax;
+	  while ((PosPPhase[1].timing.Ta < 2.0F * PosPPhase[1].timing.Tj1) || (PosPPhase[1].timing.Td < 2.0F * PosPPhase[1].timing.Tj2)) {
+		  amax -= maxAcce * 0.1F;
+		  amaxp2 = amax * amax;
 		  if (amax > 0.0F) {
-			  delta = ((rtU.TargetPos - rtU.InitPos) * 4.0F - 2.0F * amax /
-					  rtU.MaxJerk * (rtU.InitVel + rtU.TargetVel)) * amax +
-						 ((rtU.InitVel * rtU.InitVel + rtU.TargetVel * rtU.TargetVel) * 2.0F +
-								 rt_powf_snf(amax, 4.0F) / (rtU.MaxJerk * rtU.MaxJerk));
+			  delta = ((curVelp2 + targetVelp2) * 2.0F + amaxp2*amaxp2 / jerkp2) +
+					   (distance * 4.0F - 2.0F * amax / jerk * velsum) * amax;
 		  } else {
-			  delta = (delta_tmp_0 + rt_powf_snf(amax, 4.0F) / delta_tmp) -
-					  (delta_tmp_1 - 2.0F * amax / rtU.MaxJerk * delta_tmp_tmp) * amax;
+			  delta = ((curVelp2 + targetVelp2) * 2.0F + amaxp2*amaxp2 / jerkp2) -
+					   (distance * 4.0F - 2.0F * amax / jerk * velsum) * amax;
+		  }
+
+		  real32_T sqrtdelta = sqrtf(delta);
+		  PosPPhase[1].timing.Tj1 = amax / jerk;
+		  PosPPhase[1].timing.Ta = ((amaxp2 / jerk - 2.0F * curVel) + sqrtdelta) / 2.0F / amax;
+		  PosPPhase[1].timing.Tj2 = amax / jerk;
+		  PosPPhase[1].timing.Td = ((amaxp2 / jerk - 2.0F * targetVel) + sqrtdelta) / 2.0F / amax;
 	  }
 
-	  PosPTiming.Tj1 = amax / rtU.MaxJerk;
-	  PosPTiming.Td = sqrtf(delta);
-	  PosPTiming.Ta = ((amax * amax / rtU.MaxJerk - 2.0F * rtU.InitVel) + PosPTiming.Td) / 2.0F / amax;
-	  PosPTiming.Tj2 = amax / rtU.MaxJerk;
-	  PosPTiming.Td = ((amax * amax / rtU.MaxJerk - 2.0F * rtU.TargetVel) + PosPTiming.Td) / 2.0F /
-		amax;
-	}
+	  if ((PosPPhase[1].timing.Ta < 0.0F) || (PosPPhase[1].timing.Td < 0.0F)) {
 
-	real32_T deltaV = fabsf(rtU.TargetVel - rtU.InitVel);
-	if ((PosPTiming.Ta < 0.0F) || (PosPTiming.Td < 0.0F)) {
+		  velminus = targetVel - curVel;
 
-	  if (rtU.InitVel > rtU.TargetVel) {
-		  /*仅包含减速段*/
-		  PosPTiming.Ta = 0.0F;
-		  PosPTiming.Tj1 = 0.0F;
-		  PosPTiming.Td = Tv_tmp_tmp * 2.0F / delta_tmp_tmp;
-		  PosPTiming.Tj2 = (Tv_tmp_tmp * rtU.MaxJerk - sqrtf((Tv_tmp_tmp * Tv_tmp_tmp *
-				 rtU.MaxJerk + delta_tmp_tmp * delta_tmp_tmp * deltaV) * rtU.MaxJerk)) / rtU.MaxJerk / delta_tmp_tmp;
-	  } else {
-		  PosPTiming.Td = 0.0F;
-		  PosPTiming.Tj2 = 0.0F;
-		  PosPTiming.Ta = Tv_tmp_tmp * 2.0F / delta_tmp_tmp;
-		  PosPTiming.Tj1 = (Tv_tmp_tmp * rtU.MaxJerk - sqrtf((Tv_tmp_tmp * Tv_tmp_tmp *
-				 rtU.MaxJerk - delta_tmp_tmp * delta_tmp_tmp * deltaV) * rtU.MaxJerk)) / rtU.MaxJerk / delta_tmp_tmp;
+		  real32_T decelgap = 0.0;
+
+		  if (curVel > targetVel) {
+			  /*仅包含减速段*/
+			  PosPPhase[1].timing.Ta = 0.0F;
+			  PosPPhase[1].timing.Tj1 = 0.0F;
+			  PosPPhase[1].timing.Td = distance * 2.0F / velsum;
+
+			  decelgap = jerk*(jerk*distance*distance + velsum*velsum*velminus);
+			  PosPPhase[1].timing.Tj2 = (distance * jerk - sqrtf(decelgap)) / jerk / velsum;
+		  } else {
+			  PosPPhase[1].timing.Td = 0.0F;
+			  PosPPhase[1].timing.Tj2 = 0.0F;
+			  PosPPhase[1].timing.Ta = distance * 2.0F / velsum;
+
+			  decelgap = jerk*(jerk*distance*distance - velsum*velsum*velminus);
+			  PosPPhase[1].timing.Tj1 = (distance * jerk - sqrtf(decelgap)) / jerk / velsum;
+		  }
 	  }
-	}
-
-	amax = rtU.MaxAcce;
-	while (PosPTiming.Td < 2.0F * PosPTiming.Tj2) {
-	  amax -= rtU.MaxAcce * 0.1F;
-	  PosPTiming.Tj2 = amax / rtU.MaxJerk;
-	  PosPTiming.Td = ((amax * amax / rtU.MaxJerk - 2.0F * rtU.TargetVel) + sqrtf(delta)) /
-		2.0F / amax;
-	}
-
-	if (PosPTiming.Td < 0.0F) {
-		/*仅包含加速段*/
-		PosPTiming.Td = 0.0F;
-		PosPTiming.Tj2 = 0.0F;
-		PosPTiming.Ta = (rtU.TargetPos - rtU.InitPos) * 2.0F / (rtU.TargetVel + rtU.InitVel);
-		PosPTiming.Tj1 = ((rtU.TargetPos - rtU.InitPos) * rtU.MaxJerk - (Tv_tmp_tmp *
-			  Tv_tmp_tmp * rtU.MaxJerk - delta_tmp_tmp * delta_tmp_tmp * sqrtf(deltaV)) * rtU.MaxJerk) / rtU.MaxJerk /
-		delta_tmp_tmp;
-	}
   }
 
   /* All time phase calculate end
@@ -487,8 +483,89 @@ void PosProfile_CalcTimePhase()
    * Ta >= 2*Tj1
    * Td >= 2*Tj2
    * */
-  PosPTiming.T = PosPTiming.Tv + PosPTiming.Ta + PosPTiming.Td;
-  PosPTiming.ticks = PosPTiming.T * 1000;
+  PosPPhase[1].timing.T = PosPPhase[1].timing.Tv + PosPPhase[1].timing.Ta + PosPPhase[1].timing.Td;
+  PosPPhase[1].tms = (PosPPhase[1].timing.T * 1000.0F);
+  PosPPhase[1].dist = distance;
+}
+
+void PosProfile_CalcPhase0Timing(real32_T curVel, real32_T jerk)
+{
+	/*assert curVel < 0*/
+	PosPPhase[0].timing.Tj1 = sqrtf( curVel / jerk );
+	PosPPhase[0].timing.Ta  = 2.0f * PosPPhase[0].timing.Tj1;
+	PosPPhase[0].timing.T   = PosPPhase[0].timing.Ta;
+
+	PosPPhase[0].dist       = 1.5f * curVel * PosPPhase[0].timing.Tj1 -
+			                  0.5f * jerk * PosPPhase[0].timing.Tj1 * PosPPhase[0].timing.Tj1 * PosPPhase[0].timing.Tj1;
+	PosPPhase[0].tms        = PosPPhase[0].timing.T * 1000;
+}
+
+void PosProfile_Prepare(real32_T distance, real32_T curVel, real32_T targetVel, real32_T maxVel, real32_T maxAcce, real32_T maxJerk)
+{
+	/* calc two profile phase
+	 * set the direction of profile*/
+	if ((curVel < 0 && targetVel > 0) || (curVel > 0 && targetVel < 0)){
+		/*not support*/
+		return;
+	}
+
+	/* -----------------------------------------------------------------*/
+	/*           - distance                               + distance    */
+	/* reverse target pos ------ origin pos ------- positive target pos */
+	/*             dir -1                                 dir +1        */
+	/*          velocity < 0                            velocity > 0    */
+
+	int8_T hasTurn = 0;
+	if (distance > 0 && curVel < 0){
+		hasTurn = 1;
+		PosPPhase[0].dir = -1.0f;
+		PosPPhase[1].dir = 1.0f;
+	}
+
+	if (distance < 0 && curVel > 0){
+		hasTurn = 1;
+		PosPPhase[0].dir = 1.0f;
+		PosPPhase[1].dir = -1.0f;
+	}
+
+	if (!hasTurn){
+		real32_T velerr = velerr = (targetVel > curVel)? (curVel - targetVel):(targetVel - curVel);
+
+		/*jmax * (jmax*abs(q1 - q0)^2 + (v1 + v0)^2*(v1 - v0));*/
+		/*means the distance too short to plan caused of cur velocity*/
+		real32_T cond = ( maxJerk * distance * distance + (curVel+targetVel) * (curVel+targetVel) * velerr);
+		if (cond < 0){
+			hasTurn = 1;
+			if (curVel < 0){
+				PosPPhase[0].dir = -1.0f;
+				PosPPhase[1].dir = 1.0f;
+			}else{
+				PosPPhase[0].dir = 1.0f;
+				PosPPhase[1].dir = -1.0f;
+			}
+		}
+	}
+
+	if (hasTurn){
+		PosProfile_CalcPhase0Timing(abs(curVel), maxJerk);
+
+		/*the next phase calc slice timing, and all parameters are positive*/
+		distance = fabsf(distance) + PosPPhase[0].dist;
+		PosProfile_CalcPhase1Timing(distance,
+									0.0f,
+									fabsf(targetVel),
+									maxVel, maxAcce, maxJerk);
+	}else{
+		if (distance > 0)
+			PosPPhase[1].dir = (curVel >= 0.0f) ? 1.0f : -1.0f;
+		else
+			PosPPhase[1].dir = (curVel <= 0.0f) ? -1.0f : 1.0f;
+
+		PosProfile_CalcPhase1Timing(fabsf(distance),
+									fabsf(curVel),
+									fabsf(targetVel),
+									maxVel, maxAcce, maxJerk);
+	}
 }
 
 /* Model initialize function */
@@ -518,12 +595,12 @@ void PosProfile_Initialize(void)
  * maxJerk:   max jerk
  * ts:        profile per step time stamp
  * */
-void PosProfile_Start(uint32_T distance, int32_T curVel, int32_T targetVel, uint32_T maxVel, uint32_T maxAcce, uint32_T maxJerk, real32_T ts)
+void PosProfile_Start(real32_T distance, real32_T curVel, real32_T targetVel, real32_T maxVel, real32_T maxAcce, real32_T maxJerk, real32_T ts)
 {
-	rtU.InitPos = 0.0F;
+	rtU.InitPos   = 0.0F;
 	rtU.TargetPos = distance;
 
-	rtU.InitVel = curVel;
+	rtU.InitVel   = curVel;
 	rtU.TargetVel = targetVel;
 
 	rtU.MaxVel  = maxVel;
@@ -534,11 +611,48 @@ void PosProfile_Start(uint32_T distance, int32_T curVel, int32_T targetVel, uint
 	rtU.Ts = ts;
 
 	/* InitializeConditions for DiscreteIntegrator: '<S1>/Pos Integrator' */
-	rtDW.PosIntegrator_IC_LOADING = 0U;
+	rtDW.PosIntegrator_IC_LOADING = 1U;
     rtDW.PosIntegrator_DSTATE = rtU.InitPos;
 
 	/* InitializeConditions for DiscreteIntegrator: '<S1>/Vel Integrator' */
-	rtDW.VelIntegrator_IC_LOADING = 0U;
+	rtDW.VelIntegrator_IC_LOADING = 1U;
+    rtDW.VelIntegrator_DSTATE = rtU.InitVel;
+
+    rtDW.AcceIntegrator_DSTATE = 0.0F;
+
+    /* Reset the ts counter*/
+    rtDW.t_not_empty = false;
+
+    /* Velocity tranc error*/
+    rtDW.VelTrancErr = 0.0F;
+
+    memset(&PosPPhase[0], 0 ,sizeof(PosPPhase_T));
+    memset(&PosPPhase[1], 0 ,sizeof(PosPPhase_T));
+
+    PosProfile_Prepare(distance, curVel, targetVel, maxVel, maxAcce, maxJerk);
+}
+
+void PosProfile_StartHalt(real32_T curVel, real32_T maxJerk, real32_T ts)
+{
+	rtU.InitPos   = 0.0F;
+	rtU.TargetPos = 0.0F;
+
+	rtU.InitVel   = curVel;
+	rtU.TargetVel = 0.0F;
+
+	rtU.MaxVel  = curVel;
+	rtU.MaxAcce = maxJerk;
+	rtU.MaxJerk = maxJerk;
+
+	/*Time space per profile discrete step*/
+	rtU.Ts = ts;
+
+	/* InitializeConditions for DiscreteIntegrator: '<S1>/Pos Integrator' */
+	rtDW.PosIntegrator_IC_LOADING = 1U;
+    rtDW.PosIntegrator_DSTATE = rtU.InitPos;
+
+	/* InitializeConditions for DiscreteIntegrator: '<S1>/Vel Integrator' */
+	rtDW.VelIntegrator_IC_LOADING = 1U;
     rtDW.VelIntegrator_DSTATE = rtU.InitVel;
 
     /* Reset the ts counter*/
@@ -547,12 +661,23 @@ void PosProfile_Start(uint32_T distance, int32_T curVel, int32_T targetVel, uint
     /* Velocity tranc error*/
     rtDW.VelTrancErr = 0.0F;
 
-	PosProfile_CalcTimePhase();
+    memset(&PosPPhase[0], 0 ,sizeof(PosPPhase_T));
+    memset(&PosPPhase[1], 0 ,sizeof(PosPPhase_T));
+
+    PosPPhase[0].dir = (curVel < 0.0F) ? -1.0F : 1.0F;
+    PosProfile_CalcPhase0Timing(abs(curVel), maxJerk);
+
+    rtU.TargetPos = PosPPhase[0].dir * PosPPhase[0].dist;
+}
+
+real32_T PosProfile_GetTargetPos()
+{
+	return PosPPhase[0].dist * PosPPhase[0].dir + PosPPhase[1].dist * PosPPhase[1].dir;
 }
 
 boolean_T PosProfile_StepOver(uint32_T ticks)
 {
-	if (ticks >= PosPTiming.ticks){
+	if (ticks >= (PosPPhase[0].tms + PosPPhase[1].tms)){
 		return true;
 	}
 	return false;

@@ -1,0 +1,7 @@
+../Core/Src/cia/402/dsstate.c:49:10:DS402_buildStatusWordByStatus	0	static
+../Core/Src/cia/402/dsstate.c:92:6:DS402_SetStatusWordBit	8	static
+../Core/Src/cia/402/dsstate.c:102:10:DS402_buildControlWordByCommand	0	static
+../Core/Src/cia/402/dsstate.c:118:16:DS402_getStatus	0	static
+../Core/Src/cia/402/dsstate.c:145:17:DS402_getCommandFromControlWord	0	static
+../Core/Src/cia/402/dsstate.c:165:16:DS402_getNewStatusByControlWord	0	static
+../Core/Src/cia/402/dsstate.c:212:25:DS402_getModeActionFromControlWord	0	static

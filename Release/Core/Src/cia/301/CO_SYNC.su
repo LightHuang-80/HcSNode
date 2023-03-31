@@ -1,0 +1,7 @@
+../Core/Src/cia/301/CO_SYNC.c:172:27:CO_ODF_1006	0	static
+../Core/Src/cia/301/CO_SYNC.c:205:27:CO_ODF_1019	16	static
+../Core/Src/cia/301/CO_SYNC.c:87:27:CO_ODF_1005	24	static
+../Core/Src/cia/301/CO_SYNC.c:40:13:CO_SYNC_receive	0	static
+../Core/Src/cia/301/CO_SYNC.c:247:18:CO_SYNC_init	56	static
+../Core/Src/cia/301/CO_SYNC.c:336:6:CO_SYNC_initCallbackPre	0	static
+../Core/Src/cia/301/CO_SYNC.c:350:18:CO_SYNC_process	24	static

@@ -1,0 +1,4 @@
+../Core/Src/dbg/log.cpp:24:6:void LOG_Init(uint8_t, uint8_t, uint8_t)	0	static
+../Core/Src/dbg/log.cpp:31:6:void LOG_OnOff(uint8_t)	0	static
+../Core/Src/dbg/log.cpp:36:6:void LOG_SetLevel(uint8_t)	0	static
+../Core/Src/dbg/log.cpp:42:6:)	84	static

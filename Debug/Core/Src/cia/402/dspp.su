@@ -1,7 +1,6 @@
 ../Core/Src/cia/402/dspp.c:30:6:PP_reset	4	static
-../Core/Src/cia/402/dspp.c:36:6:PP_setSpeed	16	static
-../Core/Src/cia/402/dspp.c:41:6:PP_Init	16	static
-../Core/Src/cia/402/dspp.c:49:6:PP_setTargetReachedCallback	16	static
-../Core/Src/cia/402/dspp.c:54:6:PP_OnTargetReach	16	static
-../Core/Src/cia/402/dspp.c:62:6:PP_active	8	static
+../Core/Src/cia/402/dspp.c:36:6:PP_Init	8	static
+../Core/Src/cia/402/dspp.c:41:6:PP_OnTargetReach	16	static
+../Core/Src/cia/402/dspp.c:52:6:PP_OnMotionStart	4	static
+../Core/Src/cia/402/dspp.c:64:6:PP_active	16	static
 ../Core/Src/cia/402/dspp.c:73:10:PP_exec	24	static

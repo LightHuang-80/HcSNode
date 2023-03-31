@@ -15,7 +15,7 @@ uint16_t DS402_buildStatusWordByStatus(uint16_t curStatusWord, DS402_Status_t st
 uint16_t DS402_buildControlWordByCommand(uint16_t controlWord, DS402_Command_t command);
 
 DS402_Command_t 			DS402_getCommandFromControlWord(uint16_t controlWord);
-DS402_Status_t 				DS402_getNewStatusByControlWord(uint16_t statusWord, uint16_t controlWord);
+DS402_Status_t 				DS402_getNewStatusByControlWord(DS402_Status_t curStatus, uint16_t controlWord);
 DS402_OperMode_Action_t 	DS402_getModeActionFromControlWord(int8_t mode, uint16_t controlWord);
 DS402_Status_t 				DS402_getStatus(uint16_t statusWord);
 

@@ -337,7 +337,7 @@ extern struct sCO_OD_ROM CO_OD_ROM;
 
 /*1016, Data Type: UNSIGNED32, Array[4] */
       #define OD_consumerHeartbeatTime                   CO_OD_ROM.consumerHeartbeatTime
-      #define ODL_consumerHeartbeatTime_arrayLength      4
+      #define ODL_consumerHeartbeatTime_arrayLength      1
 
 /*1017, Data Type: UNSIGNED16 */
       #define OD_producerHeartbeatTime                   CO_OD_ROM.producerHeartbeatTime

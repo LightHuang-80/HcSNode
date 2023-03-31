@@ -40,8 +40,8 @@ uint32_t Stepper_GetRealSpeed();
 void Stepper_RunWithSpeed(int16_t speed);
 void Stepper_RunSteps(int32_t steps);
 
-void Stepper_SetSpeed(uint16_t speed);
-uint16_t Stepper_GetSpeed();
+void Stepper_SetSpeed(uint32_t speed);
+uint32_t Stepper_GetSpeed();
 
 void Stepper_SetDir(uint32_t dir);
 void Stepper_GoHome();

@@ -1,0 +1,3 @@
+../Core/Src/motion/PIDProfile.c:22:6:PIDProfile_Step	0	static
+../Core/Src/motion/PIDProfile.c:68:6:PIDProfile_Start	0	static
+../Core/Src/motion/PIDProfile.c:82:6:PIDProfile_Initialize	0	static

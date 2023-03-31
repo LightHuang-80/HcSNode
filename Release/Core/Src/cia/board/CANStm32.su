@@ -1,0 +1,13 @@
+../Core/Src/cia/board/CANStm32.c:22:6:CO_CANsetConfigurationMode	0	static
+../Core/Src/cia/board/CANStm32.c:28:6:CO_CANsetNormalMode	8	static
+../Core/Src/cia/board/CANStm32.c:201:6:CO_CANmodule_disable	8	static
+../Core/Src/cia/board/CANStm32.c:47:18:CO_CANmodule_init	64	static
+../Core/Src/cia/board/CANStm32.c:212:18:CO_CANrxBufferInit	20	static
+../Core/Src/cia/board/CANStm32.c:250:13:CO_CANtxBufferInit	12	static
+../Core/Src/cia/board/CANStm32.c:278:18:CO_CANsend	24	static
+../Core/Src/cia/board/CANStm32.c:327:6:CO_CANclearPendingSyncPDOs	8	static
+../Core/Src/cia/board/CANStm32.c:362:6:CO_CANpolling_Tx	24	static
+../Core/Src/cia/board/CANStm32.c:418:6:CO_CANverifyErrors	24	static
+../Core/Src/cia/board/CANStm32.c:475:6:CO_CANinterrupt	56	static
+../Core/Src/cia/board/CANStm32.c:579:6:HAL_CAN_RxFifo0MsgPendingCallback	16	static
+../Core/Src/cia/board/CANStm32.c:586:6:HAL_CAN_RxFifo1MsgPendingCallback	16	static

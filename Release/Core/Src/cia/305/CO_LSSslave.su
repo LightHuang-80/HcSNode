@@ -1,0 +1,8 @@
+../Core/Src/cia/305/CO_LSSslave.c:340:13:CO_LSSslave_receive	16	static
+../Core/Src/cia/305/CO_LSSslave.c:374:18:CO_LSSslave_init	40	static
+../Core/Src/cia/305/CO_LSSslave.c:446:6:CO_LSSslave_initCheckBitRateCallback	0	static
+../Core/Src/cia/305/CO_LSSslave.c:459:6:CO_LSSslave_initActivateBitRateCallback	0	static
+../Core/Src/cia/305/CO_LSSslave.c:472:6:CO_LSSslave_initCfgStoreCallback	0	static
+../Core/Src/cia/305/CO_LSSslave.c:485:6:CO_LSSslave_process	0	static
+../Core/Src/cia/305/CO_LSSslave.c:501:16:CO_LSSslave_getState	0	static
+../Core/Src/cia/305/CO_LSSslave.c:512:8:CO_LSSslave_LEDprocess	8	static

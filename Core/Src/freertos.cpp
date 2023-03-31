@@ -43,6 +43,7 @@
 #include "c402.h"
 #include "cmd.h"
 #include "PosProfile.h"
+#include "motor.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -57,18 +58,31 @@ extern "C" void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
 #define TARGET_JOINT 1
 
+#define LED1_BLINKFEQ	5
+#define LED2_BLINKFEQ	10
+
+#define LEDLOOPCOUNT	(LED1_BLINKFEQ * LED2_BLINKFEQ)
+#define LEDLOOPMS		1000U / LEDLOOPCOUNT
+
+#define LED1_ERR_BQCNT		LEDLOOPCOUNT / LED1_BLINKFEQ
+#define LED1_NORMAL_BQCNT	LEDLOOPCOUNT
+
+#define LED2_ERR_BQCNT		LEDLOOPCOUNT / LED2_BLINKFEQ
+#define LED2_NORMAL_BQ  	LEDLOOPCOUNT
+
+volatile uint32_t g_TransportInited = 0;
+
+TMC5160Stepper driver(0, 0.075, 0, 0, 0, -1);
+
 #if (TARGET_JOINT == 1)
-  #define STALL_VALUE             63 // [-64..63]
   #define ENCODER_ReadAngle_Retry 15
   uint8_t  g_NodeId = 0x04;
-  uint8_t  g_MicroSteps = 32;
   float    g_EncoderRatio = 32.0f;
 
-  uint16_t g_WorkCurrent = 1600; // motor rms current
   GPIO_PinState g_EndStopTriggerState = GPIO_PIN_RESET; // Endstop trigger state
   uint32_t g_EndStopTriggerMode = GPIO_MODE_IT_FALLING;
 
-  uint32_t g_MotionStepTimespace = 2;	// unit ms
+  uint32_t g_MotionStepTimespace = 4;	// unit ms
 #elif (TARGET_JOINT == 2)
   #define STALL_VALUE             63 // [-64..63]
   #define ENCODER_ReadAngle_Retry 15
@@ -115,10 +129,6 @@ volatile int32_t  g_IncSteps;
 volatile uint16_t g_AbsAngle;
 
 QueueHandle_t g_MotionMsgQueue = NULL;
-QueueHandle_t g_TargetPosQueue = NULL;
-QueueHandle_t g_StatusMsgQueue = NULL;
-
-xTimerHandle motorProcessTimer;
 
 extern Node_DriveProfile_t g_NodeDriveProfile;
 extern CAN_HandleTypeDef hcan1;
@@ -131,7 +141,7 @@ const osThreadAttr_t defaultTask_attributes = {
 		  .cb_mem = NULL,
 		  .cb_size = 0,
 		  .stack_mem = NULL,
-		  .stack_size = 128 * 4,
+		  .stack_size = 64 * 4,
 		  .priority = (osPriority_t) osPriorityNormal,
 };
 /* Definitions for ledTask */
@@ -142,7 +152,7 @@ const osThreadAttr_t ledTask_attributes = {
 		  .cb_mem = NULL,
 		  .cb_size = 0,
 		  .stack_mem = NULL,
-		  .stack_size = 128 * 4,
+		  .stack_size = 64 * 4,
 		  .priority = (osPriority_t) osPriorityLow,
 };
 /* Definitions for encoderTask */
@@ -154,18 +164,18 @@ const osThreadAttr_t encoderTask_attributes = {
 		  .cb_size = 0,
 		  .stack_mem = NULL,
 		  .stack_size = 128 * 4,
-		  .priority = (osPriority_t) osPriorityLow,
+		  .priority = (osPriority_t) osPriorityBelowNormal4,
 };
 /* Definitions for uartTask */
-osThreadId_t motorTaskHandle;
-const osThreadAttr_t motorTask_attributes = {
-		  .name = "motorTask",
+osThreadId_t motionTaskHandle;
+const osThreadAttr_t motionTask_attributes = {
+		  .name = "motionTask",
 		  .attr_bits = 0,
 		  .cb_mem = NULL,
 		  .cb_size = 0,
 		  .stack_mem = NULL,
-		  .stack_size = 1024 * 4,
-		  .priority = (osPriority_t) osPriorityLow,
+		  .stack_size = 768 * 4,
+		  .priority = (osPriority_t) osPriorityBelowNormal3,
 };
 /* Definitions for canTask */
 osThreadId_t canTaskHandle;
@@ -175,8 +185,8 @@ const osThreadAttr_t canTask_attributes = {
 		  .cb_mem = NULL,
 		  .cb_size = 0,
 		  .stack_mem = NULL,
-		  .stack_size = 128 * 4,
-		  .priority = (osPriority_t) osPriorityLow,
+		  .stack_size = 1024 * 4,
+		  .priority = (osPriority_t) osPriorityBelowNormal5,
 };
 
 /* Private function prototypes -----------------------------------------------*/
@@ -187,7 +197,7 @@ const osThreadAttr_t canTask_attributes = {
 void DefaultTaskMain(void *argument);
 void LedTaskMain(void *argument);
 void EncoderTaskMain(void *argument);
-void MotorTaskMain(void *argument);
+void MotionTaskMain(void *argument);
 void CanCommTaskMain(void *argument);
 
 void MotorProcessCB(TimerHandle_t xTimer);
@@ -215,20 +225,13 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_TIMERS */
   /* start timers, add new ones, ... */
-  motorProcessTimer = xTimerCreate("MotorProcessTimer",
-		  	  	  	  	  	  	  pdMS_TO_TICKS( g_MotionStepTimespace ),
-								  pdTRUE,
-								  0,
-								  MotorProcessCB);
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
   g_MotionMsgQueue = xQueueCreate(100, sizeof(MotionMsgItem_t));
-  g_TargetPosQueue = xQueueCreate(100, sizeof(MotionMsgItem_t));
-  g_StatusMsgQueue  = xQueueCreate(50,  sizeof(StatusMsgItem_t));
 
   // Motion 初始化
-  MT_Init(g_MotionMsgQueue, g_TargetPosQueue, g_StatusMsgQueue);
+  MT_Init(g_MotionMsgQueue);
 
   /* USER CODE END RTOS_QUEUES */
 
@@ -243,7 +246,7 @@ void MX_FREERTOS_Init(void) {
   encoderTaskHandle = osThreadNew(EncoderTaskMain, NULL, &encoderTask_attributes);
 
   /* creation of uartTask */
-  motorTaskHandle = osThreadNew(MotorTaskMain, NULL, &motorTask_attributes);
+  motionTaskHandle = osThreadNew(MotionTaskMain, NULL, &motionTask_attributes);
 
   /* creation of canTask */
   canTaskHandle = osThreadNew(CanCommTaskMain, NULL, &canTask_attributes);
@@ -284,9 +287,21 @@ void LedTaskMain(void *argument)
 {
   /* USER CODE BEGIN LedTaskMain */
   /* Infinite loop */
+  uint32_t count = 0;
+
   for(;;)
   {
-    osDelay(16);
+	if (++count >= 1000) count = 0;
+
+	uint32_t cycles = LED1_NORMAL_BQCNT;
+	if (g_TransportInited && CO->CANmodule[0]->errOld){
+		cycles = LED1_ERR_BQCNT;
+	}
+
+	if (count % cycles == 0)
+		HAL_GPIO_TogglePin(GPIOC, LED1_Pin);
+
+	osDelay(LEDLOOPMS);
   }
   /* USER CODE END LedTaskMain */
 }
@@ -342,17 +357,11 @@ void EncoderTaskMain(void *argument)
 	if (status == HAL_OK && angle != 0){
 		g_AbsAngle = angle;
 	}
-
-	//LOG_Print(LOG_InfoLevel, "curinc: %d, angle: %d\n", g_IncSteps, g_AbsAngle);
 	osDelay(2);
   }
   /* USER CODE END EncoderTaskMain */
 }
 
-void MotorProcessCB(TimerHandle_t xTimer)
-{
-	MT_process_v3(g_MotionStepTimespace);
-}
 /* USER CODE BEGIN Header_UITaskMain */
 /**
 * @brief Function implementing the uartTask thread.
@@ -361,115 +370,22 @@ void MotorProcessCB(TimerHandle_t xTimer)
 */
 /* USER CODE END Header_UITaskMain */
 #if (USE_TMC5160 == 1)
-void MotorTaskMain(void *argument)
+void MotionTaskMain(void *argument)
 {
   FUART_beginReceive(&huart1);
 
-  /* USER CODE BEGIN UITaskMain */
-  Stepper_Init(g_MicroSteps);
+  MOTOR_Init();
+  MOTOR_bindDriver(&driver);
 
-  /* Start TMC external CLK, 12M*/
-  HAL_TIM_PWM_Start(&htim8, TIM_CHANNEL_2);
-  /* Driver En pin*/
-  HAL_GPIO_WritePin(GPIOC, DRV_ENN_Pin, GPIO_PIN_RESET);
+  MT_Begin();
 
-  /* Simple delay*/
-  osDelay(10);
-
-  TMC5160Stepper driver(0, 0.075, 0, 0, 0, -1);
-
-  driver.GSTAT(0);
-
-  int32_t chopconf = driver.CHOPCONF();
-  printf("TMC5160 chop conf: 0x%08x\n", (unsigned int)chopconf);
-
-  /* Read vel actual*/
-  int32_t va = driver.VACTUAL();
-  printf("TMC5160 vactual: %ld\n", va);
-
-  driver.defaults();
-  driver.push();
-  driver.begin();
-
-  uint8_t conn = driver.test_connection();
-  if (conn != 0){
-    printf("TMC5160 not connected, ret: %d\n", conn);
-  }
-
-  uint8_t version = driver.version();
-  printf("TMC driver version: 0x%02x\n", version);
-
-  driver.chm(0); // Standard mode (spreadCycle)
-
-  /* CHOPPER_DEFAULT_24V, (4,5,0), tuned to: 4,5,2*/
-  driver.toff(4); // 0: shutdown, 1: only with tbl>=2, DcStep: no less than 3
-  driver.hend(6);
-  driver.hstrt(2);
-
-  driver.tbl(2); // blank_time(36)
-
-  driver.pwm_freq(1);
-  driver.TPOWERDOWN(10);
-  //driver.pwm_autoscale(true);
-  driver.TPWMTHRS(2000);
-
-  driver.blank_time(24);
-
-  /*Work current*/
-  driver.rms_current(g_WorkCurrent); // mA
-  driver.intpol(1);
-
-  driver.microsteps(g_MicroSteps);
-  driver.TCOOLTHRS(400000); // 20bit max
-  driver.THIGH(1200);
-  driver.semin(5);
-  driver.semax(2);
-  driver.sedn(0b01);
-  driver.sgt(STALL_VALUE);
-
-  /* DcStep*/
-  /* version 1.0, big noise
-  driver.vhighfs(1);
-  driver.vhighchm(1);
-  driver.VDCMIN(800000);
-  driver.dc_time(96);
-  HAL_GPIO_WritePin(DCEN_GPIO_Port, DCEN_Pin, GPIO_PIN_SET);
-*/
-
-  bool enable = driver.isEnabled();
-  if (enable){
-	  printf("driver enable\n");
-  }
-
-  bool sdmode = driver.sd_mode();
-  if (sdmode){
-	  printf("driver use sdmode\n");
-  }
-
-  uint8_t state = driver.GSTAT();
-  printf("driver state: %d\n", state);
-
-  uint16_t ms = driver.microsteps();
-  printf("motor micro steps: %d\n", ms);
-
-  /* Register TMC driver*/
-  JNT_registerDriver(&driver);
-
-  MotionMsgItem_t item;
-  item.position = 24800;
-  xQueueSend(g_MotionMsgQueue, &item, 0);
-
-  printf("Init Pos: %ld\n", g_IncSteps);
-
-  xTimerStart(motorProcessTimer, 0);
-
+  uint32_t ticks = 4;
   /* Infinite loop */
   for(;;)
   {
 	//JNT_processMsg();
-	  //uint32_t ticks = 5;
-	  //MT_process_v3(ticks);
-	  osDelay(4);
+	  MT_Loop(ticks);
+	  osDelay(ticks);
   }
   /* USER CODE END UITaskMain */
 }
@@ -554,6 +470,8 @@ void CanCommTaskMain(void *argument)
 
   uint32_t timeInterval = CAN_LOOP_DUARTION * TMR_TASK_INTERVAL;
 
+  g_TransportInited = 1;
+
   /* Infinite loop */
   for(;;) {
 	if(CO->CANmodule[0]->CANnormal){
@@ -563,6 +481,8 @@ void CanCommTaskMain(void *argument)
 	  syncWas = CO_process_SYNC(CO, timeInterval, &timerNext);
 
 	  NODE_process(timeInterval, syncWas);
+
+	  CO_CANpolling_Tx(CO->CANmodule[0]);
     }
 	osDelay(CAN_LOOP_DUARTION);
   }

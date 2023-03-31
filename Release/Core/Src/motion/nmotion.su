@@ -1,0 +1,20 @@
+../Core/Src/motion/nmotion.cpp:105:6:void MT_Loop(uint32_t)	16	static
+../Core/Src/motion/nmotion.cpp:117:6:void MT_setProfile(Node_DriveProfile_t*)	8	static
+../Core/Src/motion/nmotion.cpp:62:6:void MT_Clear()	0	static
+../Core/Src/motion/nmotion.cpp:87:6:void MT_Reset()	8	static
+../Core/Src/motion/nmotion.cpp:97:6:void MT_Begin()	8	static
+../Core/Src/motion/nmotion.cpp:124:6:void MT_Init(QueueHandle_t)	8	static
+../Core/Src/motion/nmotion.cpp:138:6:void MT_setReachCallback(void (*)(int32_t))	0	static
+../Core/Src/motion/nmotion.cpp:143:6:void MT_setMotionStartPreCallback(void (*)())	0	static
+../Core/Src/motion/nmotion.cpp:149:6:void MT_setReachWindow(int32_t)	8	static
+../Core/Src/motion/nmotion.cpp:156:6:void MT_Start(MotionMsgItem_t*, uint32_t)	40	static
+../Core/Src/motion/nmotion.cpp:214:6:void MT_ProfileStep(MT_RequestBlock*, uint32_t)	16	static
+../Core/Src/motion/nmotion.cpp:224:11:boolean_T MT_OverTime(MT_RequestBlock*)	0	static
+../Core/Src/motion/nmotion.cpp:229:6:void MT_Reach(MT_RequestBlock*)	16	static
+../Core/Src/motion/nmotion.cpp:243:11:boolean_T MT_IsReach(MT_RequestBlock*)	16	static
+../Core/Src/motion/nmotion.cpp:262:6:void MT_CorrectingStep(uint32_t)	8	static
+../Core/Src/motion/nmotion.cpp:270:6:void MT_Correcting(MT_RequestBlock*, uint32_t)	16	static
+../Core/Src/motion/nmotion.cpp:288:6:void MT_Halt(uint32_t)	40	static
+../Core/Src/motion/nmotion.cpp:308:6:void MT_UpdateTask(uint8_t, int32_t, int32_t, uint32_t)	48	static
+../Core/Src/motion/nmotion.cpp:329:6:void MT_NewTask(uint8_t, int32_t, int32_t, uint32_t)	32	static
+../Core/Src/motion/nmotion.cpp:342:6:void MT_process_v3(uint32_t)	40	static,ignoring_inline_asm

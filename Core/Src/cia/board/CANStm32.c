@@ -121,9 +121,9 @@ CO_ReturnError_t CO_CANmodule_init(
     	break;   // default is 8
     }
     case 125:  {
-    	Prescaler = 28;
-    	seg1 = CAN_BS1_10TQ;
-    	seg2 = CAN_BS2_1TQ;
+    	Prescaler = 20;
+    	seg1 = CAN_BS1_13TQ;
+    	seg2 = CAN_BS2_2TQ;
     	break;
     }
     case 100:  {
@@ -168,7 +168,7 @@ CO_ReturnError_t CO_CANmodule_init(
     canHandle->Init.TimeSeg2 = seg2;
     canHandle->Init.TimeTriggeredMode = DISABLE;
     canHandle->Init.AutoBusOff = ENABLE;
-    canHandle->Init.AutoWakeUp = DISABLE;
+    canHandle->Init.AutoWakeUp = ENABLE;
     canHandle->Init.AutoRetransmission = ENABLE;
     canHandle->Init.ReceiveFifoLocked = DISABLE;
     canHandle->Init.TransmitFifoPriority = DISABLE;
@@ -275,17 +275,18 @@ CO_CANtx_t *CO_CANtxBufferInit(
 }
 
 /******************************************************************************/
-CO_ReturnError_t CO_CANsend(CO_CANmodule_t *CANmodule, CO_CANtx_t *buffer){
+CO_ReturnError_t CO_CANsend(CO_CANmodule_t *CANmodule, CO_CANtx_t *buffer)
+{
     CO_ReturnError_t err = CO_ERROR_NO;
 
     /* Verify overflow */
+    /*
     if(buffer->bufferFull){
         if(!CANmodule->firstCANtxMessage){
-            /* don't set error, if bootup message is still on buffers */
             CO_errorReport((CO_EM_t*)CANmodule->em, CO_EM_CAN_TX_OVERFLOW, CO_EMC_CAN_OVERRUN, buffer->ident);
         }
         err = CO_ERROR_TX_OVERFLOW;
-    }
+    }*/
 
     CO_LOCK_CAN_SEND();
 
@@ -302,7 +303,7 @@ CO_ReturnError_t CO_CANsend(CO_CANmodule_t *CANmodule, CO_CANtx_t *buffer){
 
         uint32_t mailBox;
         if (HAL_CAN_AddTxMessage(CANmodule->CANptr, &TxHeader, &buffer->data[0], &mailBox) != HAL_OK){
-          err = CO_ERROR_TX_OVERFLOW;
+          err = HAL_CAN_GetError(CANmodule->CANptr);
         }else{
         	/* First CAN message (bootup) was sent successfully */
         	CANmodule->firstCANtxMessage = false;
@@ -311,8 +312,10 @@ CO_ReturnError_t CO_CANsend(CO_CANmodule_t *CANmodule, CO_CANtx_t *buffer){
     }
     /* if no buffer is free, message will be sent by interrupt */
     else{
-        buffer->bufferFull = true;
-        CANmodule->CANtxCount++;
+    	if (!buffer->bufferFull){
+    		buffer->bufferFull = true;
+    		CANmodule->CANtxCount++;
+    	}
     }
     CO_UNLOCK_CAN_SEND();
 
@@ -434,9 +437,8 @@ void CO_CANverifyErrors(CO_CANmodule_t *CANmodule)
             if(err & HAL_CAN_ERROR_EWG){
             	/* bus warning */
                 CO_errorReport(em, CO_EM_CAN_BUS_WARNING, CO_EMC_NO_ERROR, err);
-            }
 
-            if(err & HAL_CAN_ERROR_EPV){
+            }else if(err & HAL_CAN_ERROR_EPV){
             	/* RX/TX bus passive, 被动错误 */
                 CO_errorReport(em, CO_EM_CAN_RX_BUS_PASSIVE, CO_EMC_CAN_PASSIVE, err);
 

@@ -1,0 +1,7 @@
+../Core/Src/freertos.cpp:267:6:void DefaultTaskMain(void*)	8	static
+../Core/Src/freertos.cpp:286:6:void LedTaskMain(void*)	24	static
+../Core/Src/freertos.cpp:373:6:void MotionTaskMain(void*)	8	static
+../Core/Src/freertos.cpp:316:6:void EncoderTaskMain(void*)	24	static
+../Core/Src/freertos.cpp:451:6:void CanCommTaskMain(void*)	16	static
+../Core/Src/freertos.cpp:210:6:void MX_FREERTOS_Init()	8	static
+../Core/Src/freertos.cpp:490:1:cpp)	16	static

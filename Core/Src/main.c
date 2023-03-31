@@ -26,10 +26,10 @@
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
-
+#include "posprofile.h"
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include "nmotion.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -106,6 +106,34 @@ int main(void)
   g_GPIOInitFinished = 1;
   /* USER CODE END 2 */
 
+  PosProfile_Initialize();
+
+  /*
+  PosProfile_Start(30.26, -3.745f, 0, 125.0F, 125.0f, 125.0F, 0.004);
+  for (int i = 0; i < 200; i++){
+      PosProfile_Step(100);
+  }
+  PosProfile_Start(37.84, -31.625f, 0, 125.0F, 125.0f, 125.0F, 0.004);
+  for (int i = 0; i < 2000; i++){
+      PosProfile_Step(100);
+      printf("cmd vel: %ld\n", (int32_t)roundf(rtY.CmdVel * 200.0F));
+  }
+	*/
+/*
+  uint32_t st = HAL_GetTick();
+
+  for (int i = 0; i < 10; i++){
+	  PosProfile_Start(-100, 0, 0, 140, 120, 120, 0.004);
+	  //PosProfile_Start(-300, -40, 0, 140, 120, 120, 0.004);
+
+  	  for (int i = 0; i < 800; i++){
+  		  PosProfile_Step(100);
+  		  //printf("cmd vel: %ld\n", (int32_t)roundf(rtY.CmdVel * 200.0F));
+  	  }
+  }
+
+  printf("Exhaust time: %ld\n", st);
+*/
   /* Init scheduler */
   osKernelInitialize();  /* Call init function for freertos objects (in freertos.c) */
   MX_FREERTOS_Init();
@@ -187,8 +215,11 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim)
   if (htim->Instance == TIM13) {
     HAL_IncTick();
   }
-  /* USER CODE BEGIN Callback 1 */
 
+  /* USER CODE BEGIN Callback 1 */
+  if (htim->Instance == TIM5){
+	  MT_process_v3(4);
+  }
   /* USER CODE END Callback 1 */
 }
 

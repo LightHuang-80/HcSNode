@@ -1,8 +1,8 @@
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMCStepper.h:722:8:void TMC5160Stepper::rms_current(uint16_t)	16	static
-../Core/Src/freertos.cpp:200:6:void MX_FREERTOS_Init()	16	static
-../Core/Src/freertos.cpp:264:6:void DefaultTaskMain(void*)	16	static
-../Core/Src/freertos.cpp:283:6:void LedTaskMain(void*)	16	static
-../Core/Src/freertos.cpp:301:6:void EncoderTaskMain(void*)	24	static
-../Core/Src/freertos.cpp:352:6:void MotorProcessCB(TimerHandle_t)	16	static
-../Core/Src/freertos.cpp:364:6:void MotorTaskMain(void*)	192	static
-../Core/Src/freertos.cpp:535:6:void CanCommTaskMain(void*)	32	static
+../Core/Src/freertos.cpp:210:6:void MX_FREERTOS_Init()	8	static
+../Core/Src/freertos.cpp:267:6:void DefaultTaskMain(void*)	16	static
+../Core/Src/freertos.cpp:286:6:void LedTaskMain(void*)	24	static
+../Core/Src/freertos.cpp:316:6:void EncoderTaskMain(void*)	24	static
+../Core/Src/freertos.cpp:373:6:void MotionTaskMain(void*)	24	static
+../Core/Src/freertos.cpp:451:6:void CanCommTaskMain(void*)	32	static
+../Core/Src/freertos.cpp:490:1:void __static_initialization_and_destruction_0(int, int)	24	static
+../Core/Src/freertos.cpp:490:1:cpp)	8	static

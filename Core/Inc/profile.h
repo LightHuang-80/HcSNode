@@ -13,9 +13,11 @@ typedef struct Node_DriveProfile{
 	unsigned char switchdir;  // which side the switch installed, 1 or 0
 	unsigned char veltocw;    // 1 = velocity same as dir, or 0
 	unsigned char homestate;  // 1 = low trigger, 0 = high trigger
+
 	uint32_t speed;               // motor speed
 	uint32_t home_speed;           // homing speed
 	uint32_t home_offset;          // software zero position
+
 	float    lower_limit_range;    // lower limit position to origin
 	float    ratio;                // speed ratio
 	float    acce_ratio;           // acceleration ratio

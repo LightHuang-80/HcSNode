@@ -10,17 +10,28 @@
 
 #include "profile.h"
 #include "CO_driver_target.h"
+#include "c402.h"
+
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 void MCD_Init();
-void MCD_reset();
-void MCD_setOn();
+void MCD_reset(MotionCtrlDef_t* pmc);
+void MCD_setSwtichOnDisabled(MotionCtrlDef_t* pmc);
+
+void MCD_changeMode(MotionCtrlDef_t* pmc);
+
 void MCD_OnProfileUpdate(Node_DriveProfile_t *profile);
-void MCD_broadState(uint16_t timeDifference_us, bool_t syncWas);
-void MCD_OnControlWordUpdate();
+void MCD_OnControlWordUpdate(MotionCtrlDef_t* pmc);
+
 void MCD_OnTargetUpdate();
 void MCD_OnVelocityUpdate();
 void MCD_OnAccelerationUpdate();
 void MCD_OnCommandSerialNumberUpdate();
-void MCD_handleMsg(MotionMsgItem_t *item);
 
+#ifdef __cplusplus
+}
+#endif
 #endif /* SRC_CIA_MCDRV_H_ */

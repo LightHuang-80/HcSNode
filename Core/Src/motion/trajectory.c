@@ -95,7 +95,7 @@ void TPB_blockspairReady()
 		item.type = 1;
 	}
 
-	xQueueSend(g_MotionDriveHandle.posQueue, &item, 0);
+	//xQueueSend(g_MotionDriveHandle.posQueue, &item, 0);
 }
 
 void TPB_curblockReady()

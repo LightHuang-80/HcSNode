@@ -1,0 +1,13 @@
+D:/projects/hcbot/HcSNode/Core/Src/util/CO_fifo.h:143:22:CO_fifo_getSpace	0	static
+../Core/Src/cia/301/CO_SDOclient.c:54:13:CO_SDOclient_receive	16	static
+../Core/Src/cia/301/CO_SDOclient.c:201:6:CO_SDOclient_initCallbackPre	0	static
+../Core/Src/cia/301/CO_SDOclient.c:214:23:CO_SDOclient_setup	40	static
+../Core/Src/cia/301/CO_SDOclient.c:151:18:CO_SDOclient_init	16	static
+../Core/Src/cia/301/CO_SDOclient.c:298:23:CO_SDOclientDownloadInitiate	12	static
+../Core/Src/cia/301/CO_SDOclient.c:348:6:CO_SDOclientDownloadInitiateSize	0	static
+../Core/Src/cia/301/CO_SDOclient.c:365:8:CO_SDOclientDownloadBufWrite	0	static
+../Core/Src/cia/301/CO_SDOclient.c:378:23:CO_SDOclientDownload	32	static
+../Core/Src/cia/301/CO_SDOclient.c:849:23:CO_SDOclientUploadInitiate	8	static
+../Core/Src/cia/301/CO_SDOclient.c:900:23:CO_SDOclientUpload	32	static
+../Core/Src/cia/301/CO_SDOclient.c:1456:8:CO_SDOclientUploadBufRead	0	static
+../Core/Src/cia/301/CO_SDOclient.c:1469:6:CO_SDOclientClose	0	static

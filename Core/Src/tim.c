@@ -38,7 +38,7 @@ void MX_TIM1_Init(void)
   TIM_BreakDeadTimeConfigTypeDef sBreakDeadTimeConfig = {0};
 
   htim1.Instance = TIM1;
-  htim1.Init.Prescaler = 83;
+  htim1.Init.Prescaler = 79;	// APB2 timer clock 160MHz
   htim1.Init.CounterMode = TIM_COUNTERMODE_UP;
   htim1.Init.Period = 499;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
@@ -118,9 +118,9 @@ void MX_TIM5_Init(void)
   TIM_OC_InitTypeDef sConfigOC = {0};
 
   htim5.Instance = TIM5;
-  htim5.Init.Prescaler = 83;
+  htim5.Init.Prescaler = 79;
   htim5.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim5.Init.Period = 1999;
+  htim5.Init.Period = 3999;
   htim5.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim5.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_OC_Init(&htim5) != HAL_OK)
@@ -294,7 +294,7 @@ void HAL_TIM_OC_MspInit(TIM_HandleTypeDef* tim_ocHandle)
     __HAL_RCC_TIM5_CLK_ENABLE();
 
     /* TIM5 interrupt Init */
-    HAL_NVIC_SetPriority(TIM5_IRQn, 0, 0);
+    HAL_NVIC_SetPriority(TIM5_IRQn, 10, 0);
     HAL_NVIC_EnableIRQ(TIM5_IRQn);
   /* USER CODE BEGIN TIM5_MspInit 1 */
 

@@ -1,0 +1,15 @@
+../Core/Src/cia/301/CO_SDOserver.c:58:13:CO_SDO_receive	8	static
+../Core/Src/cia/301/CO_SDOserver.c:148:27:CO_ODF_1200	0	static
+../Core/Src/cia/301/CO_SDOserver.c:662:13:CO_SDO_abort	0	static
+../Core/Src/cia/301/CO_SDOserver.c:263:6:CO_SDO_initCallbackPre	0	static
+../Core/Src/cia/301/CO_SDOserver.c:309:10:CO_OD_find	20	static
+../Core/Src/cia/301/CO_SDOserver.c:277:6:CO_OD_configure	32	static
+../Core/Src/cia/301/CO_SDOserver.c:166:18:CO_SDO_init	48	static
+../Core/Src/cia/301/CO_SDOserver.c:345:10:CO_OD_getLength	0	static
+../Core/Src/cia/301/CO_SDOserver.c:385:10:CO_OD_getAttribute	12	static
+../Core/Src/cia/301/CO_SDOserver.c:419:7:CO_OD_getDataPointer	0	static
+../Core/Src/cia/301/CO_SDOserver.c:453:10:CO_OD_getFlagsPointer	0	static
+../Core/Src/cia/301/CO_SDOserver.c:468:10:CO_SDO_initTransfer	32	static
+../Core/Src/cia/301/CO_SDOserver.c:518:10:CO_SDO_readOD	16	static
+../Core/Src/cia/301/CO_SDOserver.c:589:10:CO_SDO_writeOD	24	static
+../Core/Src/cia/301/CO_SDOserver.c:675:8:CO_SDO_process	24	static

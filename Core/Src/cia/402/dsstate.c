@@ -162,10 +162,10 @@ DS402_Command_t DS402_getCommandFromControlWord(uint16_t controlWord)
 	return command;
 }
 
-DS402_Status_t DS402_getNewStatusByControlWord(uint16_t statusWord, uint16_t controlWord)
+DS402_Status_t DS402_getNewStatusByControlWord(DS402_Status_t curStatus, uint16_t controlWord)
 {
 	DS402_Status_t newStatus = DS402_Status_Fault;
-	DS402_Status_t curStatus = DS402_getStatus(statusWord);
+	//DS402_Status_t curStatus = DS402_getStatus(statusWord);
 
 	uint32_t cw = controlWord & 0x0F;
 	    if ((cw & 0x02) == 0){

@@ -1,0 +1,2 @@
+../Core/Src/stepper/tmc/SERIAL_SWITCH.cpp:3:1:SSwitch::SSwitch(uint16_t, uint16_t, uint8_t)	8	static
+../Core/Src/stepper/tmc/SERIAL_SWITCH.cpp:10:6:void SSwitch::active()	0	static

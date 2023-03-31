@@ -1,0 +1,10 @@
+../Core/Src/motion/posprofile.c:220:10:rt_powf_snf	16	static
+../Core/Src/motion/posprofile.c:267:6:PosProfile_Step	0	static
+../Core/Src/motion/posprofile.c:356:6:PosProfile_CalcPhase1Timing	80	static
+../Core/Src/motion/posprofile.c:491:6:PosProfile_CalcPhase0Timing	16	static
+../Core/Src/motion/posprofile.c:503:6:PosProfile_Prepare	32	static
+../Core/Src/motion/posprofile.c:572:6:PosProfile_Initialize	0	static
+../Core/Src/motion/posprofile.c:598:6:PosProfile_Start	32	static
+../Core/Src/motion/posprofile.c:635:6:PosProfile_StartHalt	32	static
+../Core/Src/motion/posprofile.c:673:10:PosProfile_GetTargetPos	0	static
+../Core/Src/motion/posprofile.c:678:11:PosProfile_StepOver	0	static

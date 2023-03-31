@@ -1,0 +1,8 @@
+../Core/Src/cia/CANopen.c:116:18:CO_new	24	static
+../Core/Src/cia/CANopen.c:268:6:CO_delete	16	static
+../Core/Src/cia/CANopen.c:504:18:CO_CANinit	32	static
+../Core/Src/cia/CANopen.c:556:18:CO_CANopenInit	72	static
+../Core/Src/cia/CANopen.c:803:20:CO_process	40	static
+../Core/Src/cia/CANopen.c:865:8:CO_process_SYNC	8	static
+../Core/Src/cia/CANopen.c:893:6:CO_process_RPDO	16	static
+../Core/Src/cia/CANopen.c:905:6:CO_process_TPDO	32	static

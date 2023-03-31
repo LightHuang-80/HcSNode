@@ -73,12 +73,13 @@ static void CO_NMT_receive(void *object, void *msg){
             default:
                 break;
         }
-
+/*
 #if (CO_CONFIG_NMT) & CO_CONFIG_NMT_CALLBACK_CHANGE
         if(NMT->pFunctNMT!=NULL && currentOperatingState!=NMT->operatingState){
             NMT->pFunctNMT(NMT->operatingState);
         }
 #endif
+*/
 #if (CO_CONFIG_NMT) & CO_CONFIG_FLAG_CALLBACK_PRE
     /* Optional signal to RTOS, which can resume task, which handles NMT. */
     if(NMT->pFunctSignalPre != NULL && currentOperatingState!=NMT->operatingState) {

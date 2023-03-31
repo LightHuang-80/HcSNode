@@ -38,6 +38,7 @@
 "./Core/Src/flash/ocflash.o"
 "./Core/Src/message/message.o"
 "./Core/Src/motion/PIDProfile.o"
+"./Core/Src/motion/motor.o"
 "./Core/Src/motion/nmotion.o"
 "./Core/Src/motion/planner.o"
 "./Core/Src/motion/posprofile.o"

@@ -18,6 +18,8 @@
 #ifndef RTW_HEADER_PosProfile_h_
 #define RTW_HEADER_PosProfile_h_
 #include <stddef.h>
+#include <stdlib.h>
+#include <string.h>
 #include <math.h>
 #ifndef PosProfile_COMMON_INCLUDES_
 #define PosProfile_COMMON_INCLUDES_
@@ -83,8 +85,14 @@ typedef struct {
 	real32_T Tj1;  /* 加速过程中的加加速时间 */
 	real32_T Td;   /* 减速时间 */
 	real32_T Tj2;  /* 减速过程中的减加速时间*/
-	uint32_T ticks;
 }PosPTiming_T;
+
+typedef struct {
+	PosPTiming_T timing;	/* 阶段时间片*/
+	uint32_T     tms;        /* 阶段时间毫秒*/
+	real32_T     dist;		/* 阶段经过的距离*/
+	real32_T	 dir;		/* 阶段方向*/
+}PosPPhase_T;
 
 extern DW rtDW;
 
@@ -102,16 +110,18 @@ extern "C" {
 #endif
 /* Model entry point functions */
 void PosProfile_Initialize(void);
-void PosProfile_Start(uint32_T distance,
-						int32_T curVel,
-						int32_T targetVel,
-						uint32_T maxVel,
-						uint32_T maxAcce,
-						uint32_T maxJerk,
-						real32_T ts);
-
+void PosProfile_Start(real32_T distance,
+		real32_T curVel,
+		real32_T targetVel,
+		real32_T maxVel,
+		real32_T maxAcce,
+		real32_T maxJerk,
+		real32_T ts);
+void PosProfile_StartHalt(real32_T curVel, real32_T maxJerk, real32_T ts);
 void PosProfile_Step(real32_T curPos);
+real32_T PosProfile_GetTargetPos();
 boolean_T PosProfile_StepOver(uint32_T ticks);
+
 #ifdef __cplusplus
 }
 #endif

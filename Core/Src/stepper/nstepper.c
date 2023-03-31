@@ -55,12 +55,8 @@ typedef struct STEPPER_RUN_DATA{
 
 	int32_t steps;      // steps
 
-	uint16_t speed;     // steps per one second
 	uint8_t  micros;    // 细分
 	int8_t   dir;       // 方向
-
-	uint32_t acce;		// accelerate
-	uint32_t dece;		// decelerate
 
 	uint16_t state;
 	uint16_t mode;
@@ -108,14 +104,10 @@ void Stepper_Init(uint8_t microsteps)
 
 	g_StepperData.steps = 0;
 
-	g_StepperData.speed = 400;  // default setting 1 round per second
-	g_StepperData.acce  = 4 * g_StepperData.speed;  // 4x speed
-	g_StepperData.dece  = 8 * g_StepperData.speed;  // 8x speed
-
 	g_StepperData.motion = NULL;
 	g_StepperData.motionFinishedCB = NULL;
 
-	Stepper_SetSpeed(g_StepperData.speed);
+	Stepper_SetSpeed(0);
 	Stepper_SetDir(g_StepperData.dir);
 }
 
@@ -159,26 +151,30 @@ void Stepper_SetDir(uint32_t dir)
 /*
  *  Set stepper motor speed
  */
-void Stepper_SetSpeed(uint16_t speed)
+void Stepper_SetSpeed(uint32_t speed)
 {
-	if (speed == 0) return;
-	if (speed >= 320000) return;
+	if (speed >= 120000) return;
 
-	/*Speed calc, steps(speed) per 1 second*/
-	g_StepperData.speed = speed;
+	/* Maximum 16bit speed, 120000*/
+	/*Speed calc, steps(speed) per 1 second
+	 * 2M tim1 frequency, 160MHz/80Prescaler */
+	uint32_t prescaler = 2000000;
+	uint32_t period = prescaler;
 
-	uint32_t prescaler = 2000000; // 2M tim1 clock
-	uint32_t period = (prescaler / speed) - 1;
+	if (speed != 0)
+		period = (prescaler / speed) - 1;
+
 	htim1.Instance->ARR = period;
-	htim1.Instance->CCR1 = period / 2;  // pulse width
+	htim1.Instance->CCR1 = period >> 1;  // pulse width
 }
 
-/*
- *  Get stepper motor current speed
- */
-uint16_t Stepper_GetSpeed()
+uint32_t Stepper_GetSpeed()
 {
-	return g_StepperData.speed;
+	uint32_t prescaler = 2000000;
+
+	if (htim1.Instance->ARR == 0) return 0;
+
+	return prescaler / htim1.Instance->ARR + 1;
 }
 
 /* Stepper motor go to origin position*/

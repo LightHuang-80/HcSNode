@@ -28,37 +28,37 @@
  * */
 
 
-MotorDriverData_t g_MotorDriverData;
+MotionCtrlDef_t g_MotionCtrl;
 
 /* ============================
  * RPDO
  * ============================ */
 CO_OD_entryRecord_t OD_record6040[1] = {
-		{(void*)&g_MotorDriverData.controlWord, 0xFE, 2}
+		{(void*)&g_MotionCtrl.controlWord, 0xFE, 2}
 };
 
 CO_OD_entryRecord_t OD_record6060[1] = {
-		{(void*)&g_MotorDriverData.mode, 0xFE, 1}
+		{(void*)&g_MotionCtrl.mode, 0xFE, 1}
 };
 
 CO_OD_entryRecord_t OD_record607A[1] = {
-		{(void*)&g_MotorDriverData.targetPos, 0xFE, 4}
+		{(void*)&g_MotionCtrl.targetPos, 0xFE, 4}
 };
 
 CO_OD_entryRecord_t OD_recordC101[1] = {
-		{(void*)&g_MotorDriverData.commandSerialNumber, 0xFE, 4}
+		{(void*)&g_MotionCtrl.commandSerialNumber, 0xFE, 4}
 };
 
 CO_OD_entryRecord_t OD_record6081[1] = {
-		{(void*)&g_MotorDriverData.profileVel, 0xFE, 4}
+		{(void*)&g_MotionCtrl.profileVel, 0xFE, 4}
 };
 
 CO_OD_entryRecord_t OD_record6083[1] = {
-		{(void*)&g_MotorDriverData.acce, 0xFE, 4}
+		{(void*)&g_MotionCtrl.acce, 0xFE, 4}
 };
 
 CO_OD_entryRecord_t OD_record6084[1] = {
-		{(void*)&g_MotorDriverData.dece, 0xFE, 4}
+		{(void*)&g_MotionCtrl.dece, 0xFE, 4}
 };
 /* ============================================ */
 
@@ -66,38 +66,17 @@ CO_OD_entryRecord_t OD_record6084[1] = {
  * TPDO
  * ============================ */
 CO_OD_entryRecord_t OD_record6041[1] = {
-		{(void*)&g_MotorDriverData.statusWord, 0xFE, 2}
+		{(void*)&g_MotionCtrl.statusWord, 0xFE, 2}
 };
 
 CO_OD_entryRecord_t OD_record6061[1] = {
-		{(void*)&g_MotorDriverData.displayMode, 0xFE, 1}
+		{(void*)&g_MotionCtrl.displayMode, 0xFE, 1}
 };
 
 CO_OD_entryRecord_t OD_record6063[1] = {
-		{(void*)&g_MotorDriverData.currentPos, 0xFE, 4}
+		{(void*)&g_MotionCtrl.currentPos, 0xFE, 4}
 };
 
 CO_OD_entryRecord_t OD_record606C[1] = {
-		{(void*)&g_MotorDriverData.currentVel, 0xFE, 4}
+		{(void*)&g_MotionCtrl.currentVel, 0xFE, 4}
 };
-
-void DS402_OnNodeStatusChanged()
-{
-
-}
-
-void DS402_SetNodeControlWords(uint8_t idx)
-{
-
-}
-
-void DS402_SetNodeStatusWord(uint8_t idx)
-{
-
-}
-
-void DS402_SetNodePosition(uint8_t idx, int32_t pos)
-{
-
-}
-

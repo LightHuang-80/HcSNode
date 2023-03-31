@@ -97,7 +97,6 @@ void HOME_finish(int32_t position)
 void HOME_active()
 {
 	MT_setReachCallback(HOME_finish);
-	MT_setSpeed(g_MotorHomeData.speed);
 	MT_setReachWindow(g_MotorHomeData.reachWindow);
 }
 

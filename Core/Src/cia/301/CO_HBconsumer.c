@@ -380,8 +380,10 @@ void CO_HBconsumer_process(
                             monitoredNode->functSignalObjectTimeout);
                     }
 #endif
+                    /*
                     CO_errorReport(HBcons->em, CO_EM_HEARTBEAT_CONSUMER,
                                    CO_EMC_HEARTBEAT, i);
+                    */
                     monitoredNode->NMTstate = CO_NMT_UNKNOWN;
                     monitoredNode->HBstate = CO_HBconsumer_TIMEOUT;
                 }

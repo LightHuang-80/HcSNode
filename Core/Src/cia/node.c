@@ -13,14 +13,17 @@
 #include "main.h"
 #include "CANopen.h"
 #include "c402.h"
+#include "nmotion.h"
 #include "mcdrv.h"
 #include "log.h"
 
 /*Node global definition*/
 extern uint8_t g_NodeId;
+uint8_t        CO_NMT_StateChangingSignal = 0;
 
 /*Node driver profile*/
 Node_DriveProfile_t g_NodeDriveProfile;
+extern MotionCtrlDef_t g_MotionCtrl;
 
 /* return string description of NMT state. */
 static char *NmtState2Str(CO_NMT_internalState_t state)
@@ -34,16 +37,40 @@ static char *NmtState2Str(CO_NMT_internalState_t state)
     }
 }
 
+void NODE_NMTCallbackPre(void* obj)
+{
+	/*called by NMT received isr*/
+	CO_NMT_StateChangingSignal = 1;
+}
+
 void NODE_NMTCallback(CO_NMT_internalState_t state)
 {
 	printf("Node NM state(%d): %s\n", state, NmtState2Str(state));
 	if (state == CO_NMT_OPERATIONAL){
-		/*Should reset the motor*/
-		MCD_reset();
+		/*Reset motion*/
+		MT_Reset();
 
-		/*Push on the mc driver*/
-		MCD_setOn();
+		/*Reset motion controller*/
+		MCD_reset(&g_MotionCtrl);
+
+		/*Push to switch on disabled the mc driver*/
+		MCD_setSwtichOnDisabled(&g_MotionCtrl);
 	}
+}
+
+void NODE_OnMasterHBTimeoutCallback(uint8_t nodeId, uint8_t idx, void *object)
+{
+	printf("Lost communication with master.\n");
+	MT_Reset();
+
+	MCD_reset(&g_MotionCtrl);
+
+	CO->NMT->operatingState = CO_NMT_PRE_OPERATIONAL;
+}
+
+void NODE_OnMasterHBStartedCallback(uint8_t nodeId, uint8_t idx, void *object)
+{
+	printf("Master heartbeat started.\n");
 }
 
 CO_SDO_abortCode_t NODE_OnProfileUpdate(CO_ODF_arg_t *ODF_arg)
@@ -55,8 +82,14 @@ CO_SDO_abortCode_t NODE_OnProfileUpdate(CO_ODF_arg_t *ODF_arg)
 		// Update the version
 		CO_OD_ROM.ds402Profile.version = (uint32_t)(*(uint32_t*)&ODF_arg->data[0]);
 
+		printf("Node profile update(%08lx)\n", CO_OD_ROM.ds402Profile.version);
+
 		// Update the driver profile
 		memcpy(&g_NodeDriveProfile, (unsigned char*)&ODF_arg->data[4], sizeof(Node_DriveProfile_t));
+
+		g_MotionCtrl.profileVel = g_NodeDriveProfile.speed;
+		g_MotionCtrl.acce = g_NodeDriveProfile.acce_ratio * g_NodeDriveProfile.speed;
+		g_MotionCtrl.dece = g_MotionCtrl.acce;
 
 		g_NodeDriveProfile.updatePositionDuration = 50; // 50ms report actual position
 		MCD_OnProfileUpdate(&g_NodeDriveProfile);
@@ -68,7 +101,7 @@ CO_SDO_abortCode_t NODE_OnProfileUpdate(CO_ODF_arg_t *ODF_arg)
 CO_SDO_abortCode_t NODE_OnControlWordUpdate(CO_ODF_arg_t *ODF_arg)
 {
 	CO_SDO_abortCode_t abort = CO_SDO_AB_NONE;
-	MCD_OnControlWordUpdate();
+	MCD_OnControlWordUpdate(&g_MotionCtrl);
 	return abort;
 }
 
@@ -76,6 +109,13 @@ CO_SDO_abortCode_t NODE_OnTargetUpdate(CO_ODF_arg_t *ODF_arg)
 {
 	CO_SDO_abortCode_t abort = CO_SDO_AB_NONE;
 	MCD_OnTargetUpdate();
+	return abort;
+}
+
+CO_SDO_abortCode_t NODE_OnModeChange(CO_ODF_arg_t *ODF_arg)
+{
+	CO_SDO_abortCode_t abort = CO_SDO_AB_NONE;
+	MCD_changeMode(&g_MotionCtrl);
 	return abort;
 }
 
@@ -134,6 +174,13 @@ uint8_t NODE_Init(void* canDevice, uint8_t nodeId)
 	/* CO node management*/
 	/* Implement a simple node management*/
 	CO_NMT_initCallbackChanged(CO->NMT, NODE_NMTCallback);
+	CO_NMT_initCallbackPre(CO->NMT, NULL, NODE_NMTCallbackPre);
+
+	/* Integrate master heartbeat timeout callback*/
+	CO_HBconsumer_initCallbackTimeout(CO->HBcons, 0, NULL, NODE_OnMasterHBTimeoutCallback);
+
+	/* Integrate master heartbeat start callback*/
+	CO_HBconsumer_initCallbackHeartbeatStarted(CO->HBcons, 0, NULL, NODE_OnMasterHBStartedCallback);
 
 	/* Register 0xC120 od entry download callback*/
 	uint16_t entryNo = CO_OD_find(CO->SDO[0], 0xC120);
@@ -176,49 +223,16 @@ uint8_t NODE_Init(void* canDevice, uint8_t nodeId)
 	return CO_ERROR_NO;
 }
 
-
-static void Node_processRPDO0(CO_RPDO_t *RPDO)
-{
-	if (!RPDO->valid || !(*RPDO->operatingState == CO_NMT_OPERATIONAL)) {
-        CO_FLAG_CLEAR(RPDO->CANrxNew[0]);
-        return;
-    }
-
-	uint8_t update = 0;
-	for (uint8_t bufNo = 0; bufNo <= 1; bufNo++){
-	  if(CO_FLAG_READ(RPDO->CANrxNew[bufNo])){
-	    int16_t i;
-	    uint8_t* pPDOdataByte;
-	    uint8_t** ppODdataByte;
-
-	    i = RPDO->dataLength;
-	    pPDOdataByte = &RPDO->CANrxData[bufNo][0];
-	    ppODdataByte = &RPDO->mapPointer[0];
-
-	    /* Copy data to Object dictionary. If between the copy operation CANrxNew
-	     * is set to true by receive thread, then copy the latest data again. */
-	    CO_FLAG_CLEAR(RPDO->CANrxNew[bufNo]);
-	    for(; i>0; i--) {
-	        **(ppODdataByte++) = *(pPDOdataByte++);
-	    }
-	    update = 1;
-	    break;
-	  }
-	}
-
-	if (update) {
-		MCD_OnControlWordUpdate();
-	}
-}
-
 void NODE_process(uint16_t timeDifference_us, bool_t syncWas)
 {
-	Node_processRPDO0(CO->RPDO[0]);
+	if (CO_NMT_StateChangingSignal){
+		CO_NMT_StateChangingSignal = 0;
+		NODE_NMTCallback(CO->NMT->operatingState);
+	}
 
-	uint8_t i = 0;
-	for (i = 1; i < CO_NO_RPDO; i++) {
-	  CO_RPDO_process(CO->RPDO[i], true);
-    }
+	CO_process_RPDO(CO, true);
 
-	MCD_broadState(timeDifference_us, syncWas);
+	/*Process TPDO*/
+	uint32_t next_time;
+	CO_process_TPDO(CO, syncWas, timeDifference_us, &next_time);
 }

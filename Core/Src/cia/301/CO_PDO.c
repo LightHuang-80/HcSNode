@@ -1075,7 +1075,7 @@ void CO_TPDO_process(
                 if(TPDO->syncCounter == 254){
                     if(TPDO->SYNC->counter == TPDO->TPDOCommPar->SYNCStartValue){
                         TPDO->syncCounter = TPDO->TPDOCommPar->transmissionType;
-                        CO_TPDOsend(TPDO);
+                        //CO_TPDOsend(TPDO);
                     }
                 }
                 /* Send PDO after every N-th Sync */
