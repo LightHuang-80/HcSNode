@@ -351,8 +351,8 @@ const CO_OD_entry_t CO_OD[CO_OD_NoOfElements] = {
 {0x2111, 0x10, 0xFD,  4, (void*)&CO_OD_ROM.variableROMInt32[0]},
 {0x2112, 0x10, 0xFF,  4, (void*)&CO_OD_EEPROM.variableNVInt32[0]},
 {0x2130, 0x03, 0x00,  0, (void*)&OD_record2130},
-{0x6000, 0x08, 0x76,  1, (void*)&CO_OD_RAM.readInput8Bit[0]},
 
+{0x6000, 0x08, 0x76,  1, (void*)&CO_OD_RAM.readInput8Bit[0]},
 {0x6040, 0x01, 0x00,  0, (void*)&OD_record6040},
 {0x6041, 0x01, 0x00,  0, (void*)&OD_record6041},
 {0x6060, 0x01, 0x00,  0, (void*)&OD_record6060},
@@ -363,10 +363,10 @@ const CO_OD_entry_t CO_OD[CO_OD_NoOfElements] = {
 {0x6081, 0x01, 0x00,  0, (void*)&OD_record6081},
 {0x6083, 0x01, 0x00,  0, (void*)&OD_record6083},
 {0x6084, 0x01, 0x00,  0, (void*)&OD_record6084},
-
 {0x6200, 0x08, 0x3E,  1, (void*)&CO_OD_RAM.writeOutput8Bit[0]},
 {0x6401, 0x0C, 0xB6,  2, (void*)&CO_OD_RAM.readAnalogueInput16Bit[0]},
 {0x6411, 0x08, 0xBE,  2, (void*)&CO_OD_RAM.writeAnalogueOutput16Bit[0]},
+
 {0xC101, 0x01, 0x00,  0, (void*)&OD_recordC101},
 {0xC120, 0x04, 0x00,  0, (void*)&OD_recordc120},
 };

@@ -9,10 +9,6 @@
 #include "c402def.h"
 #include "dspp.h"
 
-#include "301/CO_driver.h"
-#include "301/CO_SDOserver.h"
-#include "CO_OD.h"
-
 #include "c402.h"
 
 /* Motor driver:

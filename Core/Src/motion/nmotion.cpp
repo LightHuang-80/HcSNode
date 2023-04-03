@@ -237,6 +237,7 @@ void MT_Reach(MT_RequestBlock* req)
 	}
 
 	g_MotionDriveHandle.state = MTS_Idle;
+	g_MotionDriveHandle.correctingState = MCRT_Stop;
 	req->state = MRS_Empty;
 }
 

@@ -270,7 +270,6 @@ struct sCO_OD_ROM{
                UNSIGNED32     LastWord;
 };
 
-
 /***** Declaration of Object Dictionary variables *****************************/
 extern struct sCO_OD_RAM CO_OD_RAM;
 

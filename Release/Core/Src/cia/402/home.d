@@ -29,11 +29,14 @@ Core/Src/cia/402/home.o: ../Core/Src/cia/402/home.c ../Core/Inc/main.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- ../Core/Src/cia/402/c402.h ../Core/Src/cia/402/c402def.h \
+ ../Core/Src/cia/402/c402.h \
+ D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h \
+ D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_config.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h \
+ D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h \
- ../Core/Src/cia/402/dsstate.h ../Core/Inc/nstepper.h \
- ../Core/Inc/planner.h ../Core/Src/cia/402/home.h \
+ ../Core/Src/cia/402/c402def.h ../Core/Src/cia/402/dsstate.h \
+ ../Core/Inc/nstepper.h ../Core/Inc/planner.h ../Core/Src/cia/402/home.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -81,9 +84,12 @@ Core/Src/cia/402/home.o: ../Core/Src/cia/402/home.c ../Core/Inc/main.h \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 ../Core/Src/cia/402/c402.h:
-../Core/Src/cia/402/c402def.h:
+D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h:
+D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_config.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h:
+D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h:
+../Core/Src/cia/402/c402def.h:
 ../Core/Src/cia/402/dsstate.h:
 ../Core/Inc/nstepper.h:
 ../Core/Inc/planner.h:

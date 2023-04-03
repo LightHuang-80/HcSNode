@@ -12,10 +12,10 @@ d:\st\stm32cubeide_1.11.2\stm32cubeide\plugins\com.st.stm32cube.ide.mcu.external
 ../Core/Src/motion/nmotion.cpp:214:6:void MT_ProfileStep(MT_RequestBlock*, uint32_t)	24	static
 ../Core/Src/motion/nmotion.cpp:224:11:boolean_T MT_OverTime(MT_RequestBlock*)	16	static
 ../Core/Src/motion/nmotion.cpp:229:6:void MT_Reach(MT_RequestBlock*)	16	static
-../Core/Src/motion/nmotion.cpp:243:11:boolean_T MT_IsReach(MT_RequestBlock*)	24	static
-../Core/Src/motion/nmotion.cpp:262:6:void MT_CorrectingStep(uint32_t)	24	static
-../Core/Src/motion/nmotion.cpp:270:6:void MT_Correcting(MT_RequestBlock*, uint32_t)	24	static
-../Core/Src/motion/nmotion.cpp:288:6:void MT_Halt(uint32_t)	40	static
-../Core/Src/motion/nmotion.cpp:308:6:void MT_UpdateTask(uint8_t, int32_t, int32_t, uint32_t)	48	static
-../Core/Src/motion/nmotion.cpp:329:6:void MT_NewTask(uint8_t, int32_t, int32_t, uint32_t)	48	static
-../Core/Src/motion/nmotion.cpp:342:6:void MT_process_v3(uint32_t)	48	static,ignoring_inline_asm
+../Core/Src/motion/nmotion.cpp:244:11:boolean_T MT_IsReach(MT_RequestBlock*)	24	static
+../Core/Src/motion/nmotion.cpp:263:6:void MT_CorrectingStep(uint32_t)	24	static
+../Core/Src/motion/nmotion.cpp:271:6:void MT_Correcting(MT_RequestBlock*, uint32_t)	24	static
+../Core/Src/motion/nmotion.cpp:289:6:void MT_Halt(uint32_t)	40	static
+../Core/Src/motion/nmotion.cpp:309:6:void MT_UpdateTask(uint8_t, int32_t, int32_t, uint32_t)	48	static
+../Core/Src/motion/nmotion.cpp:330:6:void MT_NewTask(uint8_t, int32_t, int32_t, uint32_t)	48	static
+../Core/Src/motion/nmotion.cpp:343:6:void MT_process_v3(uint32_t)	48	static,ignoring_inline_asm

@@ -49,7 +49,9 @@ Core/Src/cia/node.o: ../Core/Src/cia/node.c \
  ../Core/Src/cia/301/CO_SYNC.h ../Core/Src/cia/301/CO_TIME.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h \
  ../Core/Src/cia/301/CO_PDO.h ../Core/Src/cia/301/CO_HBconsumer.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402.h ../Core/Inc/nmotion.h \
+ D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402.h \
+ D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h \
+ ../Core/Inc/nmotion.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Core/Inc/profile.h ../Core/Inc/PosProfile.h ../Core/Inc/rtwtypes.h \
  ../Core/Inc/PIDProfile.h ../Core/Inc/mcdrv.h ../Core/Inc/log.h
@@ -109,6 +111,7 @@ D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h:
 ../Core/Src/cia/301/CO_PDO.h:
 ../Core/Src/cia/301/CO_HBconsumer.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402.h:
+D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h:
 ../Core/Inc/nmotion.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../Core/Inc/profile.h:

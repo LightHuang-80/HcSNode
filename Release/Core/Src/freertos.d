@@ -78,8 +78,8 @@ Core/Src/freertos.o: ../Core/Src/freertos.cpp \
  D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_PDO.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_HBconsumer.h \
  ../Core/Inc/cannode.h D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402.h \
- ../Core/Inc/cmd.h ../Core/Inc/PosProfile.h ../Core/Inc/motor.h \
- ../Core/Inc/nstepper.h
+ D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h ../Core/Inc/cmd.h \
+ ../Core/Inc/PosProfile.h ../Core/Inc/motor.h ../Core/Inc/nstepper.h
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -172,6 +172,7 @@ D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_PDO.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_HBconsumer.h:
 ../Core/Inc/cannode.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402.h:
+D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h:
 ../Core/Inc/cmd.h:
 ../Core/Inc/PosProfile.h:
 ../Core/Inc/motor.h:

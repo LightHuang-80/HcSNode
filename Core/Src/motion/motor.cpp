@@ -14,7 +14,7 @@
 #define STALL_VALUE             63 // [-64..63]
 #define MICRO_STEPS             32
 
-uint16_t g_WorkCurrent = 1600; // motor rms current
+uint16_t g_WorkCurrent = 1680; // motor rms current
 
 MOTOR_Model_t MOTOR_Model;
 extern int32_t g_IncSteps;
@@ -69,7 +69,7 @@ void MOTOR_bindDriver(TMC5160Stepper* driver)
     /* CHOPPER_DEFAULT_24V, (4,5,0), tuned to: 4,5,2*/
     driver->toff(4); // 0: shutdown, 1: only with tbl>=2, DcStep: no less than 3
     driver->hend(5);
-    driver->hstrt(0);
+    driver->hstrt(2);
 
     driver->tbl(2); // blank_time(36)
 
@@ -91,7 +91,7 @@ void MOTOR_bindDriver(TMC5160Stepper* driver)
     driver->semax(2);
     driver->sedn(0b01);
     driver->sgt(STALL_VALUE);
-    driver->irun(28);
+    driver->irun(30);
     //driver->ihold(20);
 
     /* DcStep*/

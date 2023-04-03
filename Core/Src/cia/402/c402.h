@@ -8,6 +8,68 @@
 #ifndef SRC_CIA_402_C402_H_
 #define SRC_CIA_402_C402_H_
 
+#include "301/CO_driver.h"
+#include "301/CO_SDOserver.h"
+#include "CO_OD.h"
+
+struct sOD_Cia402_RAM {
+	UNSIGNED32     FirstWord;
+
+/*6093h*/ UNSIGNED32 position_factor[2];         //position_factor = numerator/divisor = Gear ratio * Increments/Rotation / Feed Constant
+/*6094h*/ UNSIGNED32 velocity_encoder_factor[2]; //velocity_encoder_factor = numerator/divisor = gear_ratio * time_factor_v/feed_constant
+/*6097h*/ UNSIGNED32 acceleration_factor[2];     //acceleration_factor = nummerator/divisor = gear_ratio * time_factor_a / feed_constant
+/*607Eh*/ UNSIGNED8  polarity;                   // bit 6 velocity polarity, bit 7 position polarity
+/*6073h*/ UNSIGNED16 max_current;
+
+/*6065h*/ UNSIGNED32 following_error_window;
+/*6066h*/ UNSIGNED16 following_error_time_out;
+/*6067h*/ UNSIGNED32 position_window;
+/*6068h*/ UNSIGNED16 position_window_time;
+/*60F4h*/ INTEGER32  following_error_actual_value;
+
+/*These limit the numerical range of the input value.
+ * for relative position target set, the input value must be checked with range limit*/
+/*607Bh*/ INTEGER32 position_range_limit[2];
+
+/*Every new target position must be checked against these limits.
+ * The limit positions are specifiedin position units (same as target position)
+ * and are always relative to the machine home position.
+<----
+corrected min position limit = min position limit - home offset
+corrected max position limit = max position limit - home offset
+---->*/
+/*607Dh*/ INTEGER32 software_position_limit[2];
+
+/*maximum allowed speed in either direction during a profiled move*/
+/*607Fh*/ UNSIGNED32 max_profile_velocity;
+
+/*6080h*/ UNSIGNED32 max_motor_speed;
+
+/*6081h*/ UNSIGNED32 profile_velocity;
+
+/*6083h*/ UNSIGNED32 profile_acceleration;
+
+/*6084h*/ UNSIGNED32 profile_deceleration;
+
+/*6085h*/ UNSIGNED32 quick_stop_deceleration;
+
+/*6086h*/ INTEGER16  motion_profile_type; //defautl 3 Jerk-limited ramp
+
+/*60C5h*/ UNSIGNED32 max_acceleration;
+
+/*60C6h*/ UNSIGNED32 max_deceleration;
+
+/*Homing related parameters*/
+/*607Ch*/ INTEGER32  home_offset;
+/*6098h*/ INTEGER8 homing_method;
+/*6099h*/ UNSIGNED32 homing_speeds[2];
+/*609Ah*/ UNSIGNED32 homing_acceleration;
+
+UNSIGNED32     LastWord;
+};
+
+extern struct sOD_Cia402_RAM CO_C402_Params;
+
 typedef struct MotionCtrlDrv_ {
 	uint16_t controlWord;   // 0x6040  control
 	uint16_t statusWord;    // 0x6041  status
@@ -63,5 +125,7 @@ typedef struct StatusMsgItem_ {
 	uint16_t code;
 	uint16_t status;
 }StatusMsgItem_t;
+
+
 
 #endif /* SRC_CIA_402_C402_H_ */

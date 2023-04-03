@@ -40,6 +40,7 @@ Core/Src/cia/mcdrv.o: ../Core/Src/cia/mcdrv.c ../Core/Src/cia/CANopen.h \
  ../Core/Src/cia/301/CO_PDO.h ../Core/Src/cia/301/CO_HBconsumer.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402def.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402.h \
+ D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/402/dsstate.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/402/dspp.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/402/dsposc.h \
@@ -105,6 +106,7 @@ D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h:
 ../Core/Src/cia/301/CO_HBconsumer.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402def.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402.h:
+D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/402/dsstate.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/402/dspp.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/402/dsposc.h:

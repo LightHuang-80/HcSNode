@@ -33,10 +33,10 @@ Core/Src/cia/402/c402.o: ../Core/Src/cia/402/c402.c ../Core/Inc/main.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h \
  ../Core/Src/cia/402/dspp.h ../Core/Src/cia/402/dsposc.h \
+ ../Core/Src/cia/402/c402.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h \
  D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_config.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h \
- ../Core/Src/cia/402/c402.h
+ D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
@@ -73,7 +73,7 @@ D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h:
 ../Core/Src/cia/402/dspp.h:
 ../Core/Src/cia/402/dsposc.h:
+../Core/Src/cia/402/c402.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_config.h:
 D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:
-../Core/Src/cia/402/c402.h:
