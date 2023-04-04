@@ -1,0 +1,8 @@
+IHOLD_IRUN.cpp:8:10:uint32_t TMCStepper::IHOLD_IRUN()	1
+IHOLD_IRUN.cpp:9:6:void TMCStepper::IHOLD_IRUN(uint32_t)	1
+IHOLD_IRUN.cpp:14:7:void TMCStepper::ihold(uint8_t)	1
+IHOLD_IRUN.cpp:15:7:void TMCStepper::irun(uint8_t)	1
+IHOLD_IRUN.cpp:16:7:void TMCStepper::iholddelay(uint8_t)	1
+IHOLD_IRUN.cpp:18:9:uint8_t TMCStepper::ihold()	1
+IHOLD_IRUN.cpp:19:9:uint8_t TMCStepper::irun()	1
+IHOLD_IRUN.cpp:20:9:uint8_t TMCStepper::iholddelay()	1

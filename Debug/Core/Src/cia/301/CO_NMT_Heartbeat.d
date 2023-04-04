@@ -1,8 +1,8 @@
 Core/Src/cia/301/CO_NMT_Heartbeat.o: \
  ../Core/Src/cia/301/CO_NMT_Heartbeat.c \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301\CO_driver.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301\CO_config.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h \
+ D:/projects/hcsnode/Core/Src/cia/301\CO_driver.h \
+ D:/projects/hcsnode/Core/Src/cia/301\CO_config.h \
+ D:/projects/hcsnode/Core/Src/cia/board/CO_driver_target.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -33,13 +33,13 @@ Core/Src/cia/301/CO_NMT_Heartbeat.o: \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301\CO_SDOserver.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301\CO_Emergency.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301\CO_NMT_Heartbeat.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_Emergency.h
-D:/projects/hcbot/HcSNode/Core/Src/cia/301\CO_driver.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301\CO_config.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h:
+ D:/projects/hcsnode/Core/Src/cia/301\CO_SDOserver.h \
+ D:/projects/hcsnode/Core/Src/cia/301\CO_Emergency.h \
+ D:/projects/hcsnode/Core/Src/cia/301\CO_NMT_Heartbeat.h \
+ D:/projects/hcsnode/Core/Src/cia/301/CO_Emergency.h
+D:/projects/hcsnode/Core/Src/cia/301\CO_driver.h:
+D:/projects/hcsnode/Core/Src/cia/301\CO_config.h:
+D:/projects/hcsnode/Core/Src/cia/board/CO_driver_target.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -70,7 +70,7 @@ D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301\CO_SDOserver.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301\CO_Emergency.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301\CO_NMT_Heartbeat.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_Emergency.h:
+D:/projects/hcsnode/Core/Src/cia/301\CO_SDOserver.h:
+D:/projects/hcsnode/Core/Src/cia/301\CO_Emergency.h:
+D:/projects/hcsnode/Core/Src/cia/301\CO_NMT_Heartbeat.h:
+D:/projects/hcsnode/Core/Src/cia/301/CO_Emergency.h:

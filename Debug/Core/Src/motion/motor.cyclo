@@ -1,0 +1,17 @@
+std_abs.h:56:3:long int std::abs(long int)	1
+TMCStepper.h:722:8:void TMC5160Stepper::rms_current(uint16_t)	1
+motor.cpp:22:6:void MOTOR_Init()	1
+motor.cpp:31:6:void MOTOR_bindDriver(TMC5160Stepper*)	4
+motor.cpp:134:6:void MOTOR_run()	1
+motor.cpp:139:6:void MOTOR_stop()	1
+motor.cpp:145:6:void MOTOR_loop(uint32_t)	1
+motor.cpp:150:6:void MOTOR_setPolarity(int8_t)	1
+motor.cpp:155:8:int8_t MOTOR_getPolarity()	1
+motor.cpp:160:6:void MOTOR_setDir(int8_t)	4
+motor.cpp:169:8:int8_t MOTOR_getDir()	5
+motor.cpp:179:6:void MOTOR_setSpeed(int32_t)	4
+motor.cpp:197:9:int32_t MOTOR_getSpeed()	1
+motor.cpp:202:6:void MOTOR_setRelTarget(int32_t)	1
+motor.cpp:207:6:void MOTOR_setAbsTarget(int32_t)	1
+motor.cpp:212:9:int32_t MOTOR_getTarget()	1
+motor.cpp:217:9:int32_t MOTOR_getPosDiff()	1

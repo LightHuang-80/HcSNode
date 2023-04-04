@@ -1,0 +1,7 @@
+trajectory.c:43:6:TPB_Init	1
+trajectory.c:51:6:TPB_blockspairReady	3
+trajectory.c:101:6:TPB_curblockReady	2
+trajectory.c:115:6:TPB_positionUpdate	2
+trajectory.c:125:6:TPB_commandSerialNumberUpdate	2
+trajectory.c:134:6:TPB_velocityUpdate	2
+trajectory.c:144:6:TPB_accelerationUpdate	2

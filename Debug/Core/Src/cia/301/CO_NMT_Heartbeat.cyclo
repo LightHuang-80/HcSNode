@@ -1,0 +1,6 @@
+CO_NMT_Heartbeat.c:39:13:CO_NMT_receive	15
+CO_NMT_Heartbeat.c:94:18:CO_NMT_init	6
+CO_NMT_Heartbeat.c:193:6:CO_NMT_initCallbackPre	2
+CO_NMT_Heartbeat.c:208:6:CO_NMT_initCallbackChanged	3
+CO_NMT_Heartbeat.c:223:20:CO_NMT_process	83
+CO_NMT_Heartbeat.c:435:24:CO_NMT_getInternalState	2

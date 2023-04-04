@@ -68,50 +68,17 @@ void MCD_Init(MotionCtrlDef_t* pmc)
 	/*Initialize the home, pp, ip mode callback*/
 	HOME_Init(g_NodeDriveProfile.home_offset, 17, g_NodeDriveProfile.home_speed, 4*g_NodeDriveProfile.home_speed);
 
-	/*Profile position model initialize*/
-	PP_Init();
-
 	/*Trajectory position blocks*/
 	TPB_Init();
 	pmc->statusWord = DS402_buildStatusWordByStatus(pmc->statusWord, DS402_Status_NotReadyToSwitchON);
 }
 
 
-/* Motor control driver, change mode
- * mode: received from host
- * displaymode: set right mode if initialize successfully */
-void MCD_changeMode(MotionCtrlDef_t* pmc)
-{
-	if (pmc->mode == DS402_OperMode_Homing ) {
-		HOME_active();
-	}else if (pmc->mode == DS402_OperMode_ProfilePosition){
-		PP_active(pmc->controlWord);
-	}
-	pmc->displayMode = pmc->mode;
-}
-
 void MCD_OnProfileUpdate(Node_DriveProfile_t *profile)
 {
 	/*Reset the home and pp*/
 	HOME_setProfile(profile->home_offset, 17, profile->home_speed, 4*profile->home_speed);
 	MT_setProfile(profile);
-}
-
-void MCD_handleModeAction(MotionCtrlDef_t* pmc)
-{
-	if (pmc->displayMode == DS402_OperMode_Homing){
-		HOME_exec(pmc->controlWord);
-		/*Bit 10, target reached*/
-		/*Bit 12, home attained*/
-		/*Bit 13, homing error happen*/
-	}else if (pmc->displayMode == DS402_OperMode_ProfilePosition){
-		/*Set motion type, control : 0x001f(Discrete|queued mode), 0x021f(Complex queued mode)*/
-		/*Bit 10, target reached*/
-		/*Bit 12 Set-point acknowledge */
-
-		/*Bit 13 Following error  */
-		PP_exec(pmc->controlWord);
-	}
 }
 
 void MCD_changeStatus(MotionCtrlDef_t* pmc, DS402_Status_t status)
@@ -132,11 +99,15 @@ void MCD_OnControlWordUpdate(MotionCtrlDef_t* pmc)
 	if (newStatus == DS402_Status_OperationEnable) {
 
 		if (pmc->mode != pmc->displayMode) {
+			/*set the motion mode*/
+			MT_setMode(pmc->mode);
+
 			/*Change current mode*/
-			MCD_changeMode(pmc);
+			pmc->displayMode = pmc->mode;
 		}
 
-		MCD_handleModeAction(pmc);
+		/*Motion drive execute the control word*/
+		MT_exec(pmc->controlWord);
 	}
 }
 

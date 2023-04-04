@@ -1,0 +1,15 @@
+nstepper.c:74:13:discard_current_block	2
+nstepper.c:91:6:Stepper_Init	1
+nstepper.c:117:6:Stepper_ChangeDir	2
+nstepper.c:130:8:Stepper_GetDir	1
+nstepper.c:138:6:Stepper_SetDir	3
+nstepper.c:154:6:Stepper_SetSpeed	3
+nstepper.c:171:10:Stepper_GetSpeed	2
+nstepper.c:181:6:Stepper_GoHome	1
+nstepper.c:188:6:Stepper_Stop	1
+nstepper.c:198:10:Stepper_GetState	1
+nstepper.c:204:6:Stepper_Run	1
+nstepper.c:212:6:Stepper_RunWithSpeed	2
+nstepper.c:227:6:Stepper_RunSteps	2
+nstepper.c:246:6:Stepper_StepsISR	3
+nstepper.c:263:6:HAL_TIM_PWM_PulseFinishedCallback	4

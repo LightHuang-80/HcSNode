@@ -25,7 +25,7 @@
 
 
 MotionCtrlDef_t g_MotionCtrl;
-
+SOD_Cia402_RAM CO_C402_Params;
 /* ============================
  * RPDO
  * ============================ */

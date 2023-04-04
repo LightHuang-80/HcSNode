@@ -228,10 +228,9 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE END RTOS_TIMERS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
-  g_MotionMsgQueue = xQueueCreate(100, sizeof(MotionMsgItem_t));
 
   // Motion 初始化
-  MT_Init(g_MotionMsgQueue);
+  MT_init();
 
   /* USER CODE END RTOS_QUEUES */
 
@@ -377,14 +376,14 @@ void MotionTaskMain(void *argument)
   MOTOR_Init();
   MOTOR_bindDriver(&driver);
 
-  MT_Begin();
+  MT_begin();
 
   uint32_t ticks = 4;
   /* Infinite loop */
   for(;;)
   {
 	//JNT_processMsg();
-	  MT_Loop(ticks);
+	  MT_loop(ticks);
 	  osDelay(ticks);
   }
   /* USER CODE END UITaskMain */

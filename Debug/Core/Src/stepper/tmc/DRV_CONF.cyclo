@@ -1,0 +1,12 @@
+DRV_CONF.cpp:8:10:uint32_t TMC2160Stepper::DRV_CONF()	1
+DRV_CONF.cpp:9:6:void TMC2160Stepper::DRV_CONF(uint32_t)	1
+DRV_CONF.cpp:14:6:void TMC2160Stepper::bbmtime(uint8_t)	1
+DRV_CONF.cpp:15:6:void TMC2160Stepper::bbmclks(uint8_t)	1
+DRV_CONF.cpp:16:6:void TMC2160Stepper::otselect(uint8_t)	1
+DRV_CONF.cpp:17:6:void TMC2160Stepper::drvstrength(uint8_t)	1
+DRV_CONF.cpp:18:6:void TMC2160Stepper::filt_isense(uint8_t)	1
+DRV_CONF.cpp:19:9:uint8_t TMC2160Stepper::bbmtime()	1
+DRV_CONF.cpp:20:9:uint8_t TMC2160Stepper::bbmclks()	1
+DRV_CONF.cpp:21:9:uint8_t TMC2160Stepper::otselect()	1
+DRV_CONF.cpp:22:9:uint8_t TMC2160Stepper::drvstrength()	1
+DRV_CONF.cpp:23:9:uint8_t TMC2160Stepper::filt_isense()	1

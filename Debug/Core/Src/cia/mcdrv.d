@@ -1,6 +1,6 @@
 Core/Src/cia/mcdrv.o: ../Core/Src/cia/mcdrv.c ../Core/Src/cia/CANopen.h \
  ../Core/Src/cia/301/CO_driver.h ../Core/Src/cia/301/CO_config.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h \
+ D:/projects/hcsnode/Core/Src/cia/board/CO_driver_target.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -33,19 +33,18 @@ Core/Src/cia/mcdrv.o: ../Core/Src/cia/mcdrv.c ../Core/Src/cia/CANopen.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Src/cia/301/CO_SDOserver.h ../Core/Src/cia/301/CO_Emergency.h \
  ../Core/Src/cia/301/CO_NMT_Heartbeat.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_Emergency.h \
+ D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h \
+ D:/projects/hcsnode/Core/Src/cia/301/CO_Emergency.h \
  ../Core/Src/cia/301/CO_SYNC.h ../Core/Src/cia/301/CO_TIME.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h \
+ D:/projects/hcsnode/Core/Src/cia/board/CO_OD.h \
  ../Core/Src/cia/301/CO_PDO.h ../Core/Src/cia/301/CO_HBconsumer.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402def.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/402/dsstate.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/402/dspp.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/402/dsposc.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/402/home.h \
- ../Core/Inc/trajectory.h \
+ D:/projects/hcsnode/Core/Src/cia/402/c402def.h \
+ D:/projects/hcsnode/Core/Src/cia/402/c402.h \
+ D:/projects/hcsnode/Core/Src/cia/301/CO_driver.h \
+ D:/projects/hcsnode/Core/Src/cia/402/dsstate.h \
+ D:/projects/hcsnode/Core/Src/cia/402/dspp.h \
+ D:/projects/hcsnode/Core/Src/cia/402/dsposc.h \
+ D:/projects/hcsnode/Core/Src/cia/402/home.h ../Core/Inc/trajectory.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -58,12 +57,12 @@ Core/Src/cia/mcdrv.o: ../Core/Src/cia/mcdrv.c ../Core/Src/cia/CANopen.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Core/Inc/log.h ../Core/Inc/nmotion.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- ../Core/Inc/profile.h ../Core/Inc/PosProfile.h ../Core/Inc/rtwtypes.h \
- ../Core/Inc/PIDProfile.h ../Core/Inc/mcdrv.h
+ ../Core/Inc/profile.h ../Core/Inc/motiondef.h ../Core/Inc/PosProfile.h \
+ ../Core/Inc/rtwtypes.h ../Core/Inc/PIDProfile.h ../Core/Inc/mcdrv.h
 ../Core/Src/cia/CANopen.h:
 ../Core/Src/cia/301/CO_driver.h:
 ../Core/Src/cia/301/CO_config.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h:
+D:/projects/hcsnode/Core/Src/cia/board/CO_driver_target.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -97,20 +96,20 @@ D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h:
 ../Core/Src/cia/301/CO_SDOserver.h:
 ../Core/Src/cia/301/CO_Emergency.h:
 ../Core/Src/cia/301/CO_NMT_Heartbeat.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_Emergency.h:
+D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h:
+D:/projects/hcsnode/Core/Src/cia/301/CO_Emergency.h:
 ../Core/Src/cia/301/CO_SYNC.h:
 ../Core/Src/cia/301/CO_TIME.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h:
+D:/projects/hcsnode/Core/Src/cia/board/CO_OD.h:
 ../Core/Src/cia/301/CO_PDO.h:
 ../Core/Src/cia/301/CO_HBconsumer.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402def.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/402/dsstate.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/402/dspp.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/402/dsposc.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/402/home.h:
+D:/projects/hcsnode/Core/Src/cia/402/c402def.h:
+D:/projects/hcsnode/Core/Src/cia/402/c402.h:
+D:/projects/hcsnode/Core/Src/cia/301/CO_driver.h:
+D:/projects/hcsnode/Core/Src/cia/402/dsstate.h:
+D:/projects/hcsnode/Core/Src/cia/402/dspp.h:
+D:/projects/hcsnode/Core/Src/cia/402/dsposc.h:
+D:/projects/hcsnode/Core/Src/cia/402/home.h:
 ../Core/Inc/trajectory.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
@@ -126,6 +125,7 @@ D:/projects/hcbot/HcSNode/Core/Src/cia/402/home.h:
 ../Core/Inc/nmotion.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../Core/Inc/profile.h:
+../Core/Inc/motiondef.h:
 ../Core/Inc/PosProfile.h:
 ../Core/Inc/rtwtypes.h:
 ../Core/Inc/PIDProfile.h:

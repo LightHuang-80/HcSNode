@@ -1,0 +1,16 @@
+DRVCTRL.cpp:9:10:uint32_t TMC2660Stepper::DRVCTRL()	2
+DRVCTRL.cpp:13:6:void TMC2660Stepper::DRVCTRL(uint32_t)	2
+DRVCTRL.cpp:24:6:void TMC2660Stepper::pha(bool)	2
+DRVCTRL.cpp:25:6:void TMC2660Stepper::ca(uint8_t)	2
+DRVCTRL.cpp:26:6:void TMC2660Stepper::phb(bool)	2
+DRVCTRL.cpp:27:6:void TMC2660Stepper::cb(uint8_t)	2
+DRVCTRL.cpp:29:6:bool TMC2660Stepper::pha()	2
+DRVCTRL.cpp:30:9:uint8_t TMC2660Stepper::ca()	2
+DRVCTRL.cpp:31:6:bool TMC2660Stepper::phb()	2
+DRVCTRL.cpp:32:9:uint8_t TMC2660Stepper::cb()	2
+DRVCTRL.cpp:35:6:void TMC2660Stepper::intpol(bool)	2
+DRVCTRL.cpp:36:6:void TMC2660Stepper::dedge(bool)	2
+DRVCTRL.cpp:37:6:void TMC2660Stepper::mres(uint8_t)	2
+DRVCTRL.cpp:39:6:bool TMC2660Stepper::intpol()	2
+DRVCTRL.cpp:40:6:bool TMC2660Stepper::dedge()	2
+DRVCTRL.cpp:41:9:uint8_t TMC2660Stepper::mres()	2

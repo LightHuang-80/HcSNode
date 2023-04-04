@@ -21,13 +21,13 @@ OBJS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
-Core/Src/cia/%.o Core/Src/cia/%.su: ../Core/Src/cia/%.c Core/Src/cia/subdir.mk
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32F405xx -DUSE_HAL_DRIVER -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"D:/projects/hcbot/HcSNode/Core/Src/cia/board" -I"D:/projects/hcbot/HcSNode/Core/Src/cia/402" -I"D:/projects/hcbot/HcSNode/Core/Src/cia/305" -I"D:/projects/hcbot/HcSNode/Core/Src/cia/301" -I"D:/projects/hcbot/HcSNode/Core/Src/cia" -I"D:/projects/hcbot/HcSNode/Core/Src/util" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
+Core/Src/cia/%.o Core/Src/cia/%.su Core/Src/cia/%.cyclo: ../Core/Src/cia/%.c Core/Src/cia/subdir.mk
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m4 -std=gnu11 -g3 -DSTM32F405xx -DUSE_HAL_DRIVER -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc -I../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F4xx/Include -I../Drivers/CMSIS/Include -I../Middlewares/Third_Party/FreeRTOS/Source/include -I../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2 -I../Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F -I"D:/projects/hcsnode/Core/Src/stepper/tmc" -I"D:/projects/hcsnode/Core/Src/cia/board" -I"D:/projects/hcsnode/Core/Src/cia/402" -I"D:/projects/hcsnode/Core/Src/cia/305" -I"D:/projects/hcsnode/Core/Src/cia/301" -I"D:/projects/hcsnode/Core/Src/cia" -I"D:/projects/hcsnode/Core/Src/util" -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -fcyclomatic-complexity -MMD -MP -MF"$(@:%.o=%.d)" -MT"$@" --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -o "$@"
 
 clean: clean-Core-2f-Src-2f-cia
 
 clean-Core-2f-Src-2f-cia:
-	-$(RM) ./Core/Src/cia/CANopen.d ./Core/Src/cia/CANopen.o ./Core/Src/cia/CANopen.su ./Core/Src/cia/mcdrv.d ./Core/Src/cia/mcdrv.o ./Core/Src/cia/mcdrv.su ./Core/Src/cia/node.d ./Core/Src/cia/node.o ./Core/Src/cia/node.su
+	-$(RM) ./Core/Src/cia/CANopen.cyclo ./Core/Src/cia/CANopen.d ./Core/Src/cia/CANopen.o ./Core/Src/cia/CANopen.su ./Core/Src/cia/mcdrv.cyclo ./Core/Src/cia/mcdrv.d ./Core/Src/cia/mcdrv.o ./Core/Src/cia/mcdrv.su ./Core/Src/cia/node.cyclo ./Core/Src/cia/node.d ./Core/Src/cia/node.o ./Core/Src/cia/node.su
 
 .PHONY: clean-Core-2f-Src-2f-cia
 

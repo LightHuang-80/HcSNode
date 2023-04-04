@@ -1,0 +1,10 @@
+CO_fifo.h:160:22:size_t CO_fifo_getOccupied(CO_fifo_t*)	2
+fsusart.cpp:51:6:void FUART_Init()	1
+fsusart.cpp:60:6:void FUART_beginReceive(UART_HandleTypeDef*)	1
+fsusart.cpp:65:6:void FUART_pushMsgToFifo(Joint_Msg_t*, uint8_t*, size_t, CO_fifo_t*)	3
+fsusart.cpp:78:15:size_t internalPeekMsgFromFifo(CO_fifo_t*, uint8_t*)	4
+fsusart.cpp:108:6:void FUART_sendMsg(Joint_Msg_t*, uint8_t*, size_t)	6
+fsusart.cpp:127:5:int FUART_peekMsg(UART_HandleTypeDef*, uint8_t*)	8
+fsusart.cpp:183:6:void HAL_UART_TxCpltCallback(UART_HandleTypeDef*)	6
+fsusart.cpp:204:6:void HAL_UART_RxCpltCallback(UART_HandleTypeDef*)	1
+fsusart.cpp:211:6:void HAL_UART_ErrorCallback(UART_HandleTypeDef*)	4

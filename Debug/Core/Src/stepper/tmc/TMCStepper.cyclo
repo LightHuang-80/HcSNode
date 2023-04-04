@@ -1,0 +1,27 @@
+TMCStepper.cpp:20:10:uint16_t TMCStepper::cs2rms(uint8_t)	2
+TMCStepper.cpp:24:6:void TMCStepper::rms_current(uint16_t)	3
+TMCStepper.cpp:41:6:void TMCStepper::rms_current(uint16_t, float)	1
+TMCStepper.cpp:46:10:uint16_t TMCStepper::rms_current()	1
+TMCStepper.cpp:50:9:uint8_t TMCStepper::test_connection()	3
+TMCStepper.cpp:59:6:void TMCStepper::hysteresis_end(int8_t)	1
+TMCStepper.cpp:60:8:int8_t TMCStepper::hysteresis_end()	1
+TMCStepper.cpp:62:6:void TMCStepper::hysteresis_start(uint8_t)	1
+TMCStepper.cpp:63:9:uint8_t TMCStepper::hysteresis_start()	1
+TMCStepper.cpp:65:6:void TMCStepper::microsteps(uint16_t)	14
+TMCStepper.cpp:80:10:uint16_t TMCStepper::microsteps()	10
+TMCStepper.cpp:95:6:void TMCStepper::blank_time(uint8_t)	7
+TMCStepper.cpp:104:9:uint8_t TMCStepper::blank_time()	5
+TMCStepper.cpp:116:9:uint8_t TMCStepper::GSTAT()	1
+TMCStepper.cpp:117:7:void TMCStepper::GSTAT(uint8_t)	1
+TMCStepper.cpp:118:7:bool TMCStepper::reset()	1
+TMCStepper.cpp:119:7:bool TMCStepper::drv_err()	1
+TMCStepper.cpp:120:7:bool TMCStepper::uv_cp()	1
+TMCStepper.cpp:123:9:uint8_t TMCStepper::TPOWERDOWN()	1
+TMCStepper.cpp:124:6:void TMCStepper::TPOWERDOWN(uint8_t)	1
+TMCStepper.cpp:130:10:uint32_t TMCStepper::TSTEP()	1
+TMCStepper.cpp:133:10:uint32_t TMCStepper::TPWMTHRS()	1
+TMCStepper.cpp:134:6:void TMCStepper::TPWMTHRS(uint32_t)	1
+TMCStepper.cpp:139:10:uint16_t TMCStepper::MSCNT()	1
+TMCStepper.cpp:143:10:uint32_t TMCStepper::MSCURACT()	1
+TMCStepper.cpp:144:9:int16_t TMCStepper::cur_a()	2
+TMCStepper.cpp:151:9:int16_t TMCStepper::cur_b()	2

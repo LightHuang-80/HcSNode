@@ -1,0 +1,9 @@
+as5048a.c:28:6:AS5048A_Init	1
+as5048a.c:33:17:AS5048A_SPI_WriteData	1
+as5048a.c:43:16:parity_even	2
+as5048a.c:55:13:AS5048A_ClearAndNop	1
+as5048a.c:67:10:AS5048A_ReadReg	4
+as5048a.c:96:10:AS5048A_WriteReg	4
+as5048a.c:135:10:AS5048A_ReadValue	2
+as5048a.c:155:10:AS5048A_ReadAngle	1
+as5048a.c:163:10:AS5048A_ZeroPoint	9

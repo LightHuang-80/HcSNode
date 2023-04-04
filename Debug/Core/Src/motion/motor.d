@@ -41,18 +41,18 @@ Core/Src/motion/motor.o: ../Core/Src/motion/motor.cpp \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS_V2/cmsis_os2.h \
  ../Core/Inc/tim.h ../Core/Inc/main.h ../Core/Inc/motor.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMCStepper.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMCStepper.h \
  ../Core/Inc/fserial.h ../Core/Inc/arduio.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/SERIAL_SWITCH.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC_platforms.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC_platforms.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC2130_bitfields.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC2160_bitfields.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC5130_bitfields.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC5160_bitfields.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC2208_bitfields.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC2209_bitfields.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC2660_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/SERIAL_SWITCH.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2130_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2160_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC5130_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC5160_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2208_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2209_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2660_bitfields.h \
  ../Core/Inc/nstepper.h ../Core/Inc/planner.h ../Core/Inc/message.h
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
@@ -99,19 +99,19 @@ Core/Src/motion/motor.o: ../Core/Src/motion/motor.cpp \
 ../Core/Inc/tim.h:
 ../Core/Inc/main.h:
 ../Core/Inc/motor.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMCStepper.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMCStepper.h:
 ../Core/Inc/fserial.h:
 ../Core/Inc/arduio.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/SERIAL_SWITCH.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC_platforms.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC_platforms.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC2130_bitfields.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC2160_bitfields.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC5130_bitfields.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC5160_bitfields.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC2208_bitfields.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC2209_bitfields.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC2660_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/SERIAL_SWITCH.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2130_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2160_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC5130_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC5160_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2208_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2209_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2660_bitfields.h:
 ../Core/Inc/nstepper.h:
 ../Core/Inc/planner.h:
 ../Core/Inc/message.h:

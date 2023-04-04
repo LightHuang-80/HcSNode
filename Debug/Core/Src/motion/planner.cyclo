@@ -1,0 +1,5 @@
+planner.c:65:14:estimate_acceleration_distance	2
+planner.c:70:14:intersection_distance	2
+planner.c:75:14:final_speed	1
+planner.c:79:17:get_period_inverse	2
+planner.c:83:6:calculate_trapezoid_for_block	5

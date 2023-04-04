@@ -1,0 +1,13 @@
+CO_LSSslave.c:36:13:CO_LSSslave_serviceSwitchStateGlobal	3
+CO_LSSslave.c:62:13:CO_LSSslave_serviceSwitchStateSelective	10
+CO_LSSslave.c:108:13:CO_LSSslave_serviceConfig	18
+CO_LSSslave.c:224:13:CO_LSSslave_serviceInquire	7
+CO_LSSslave.c:266:13:CO_LSSslave_serviceIdent	15
+CO_LSSslave.c:340:13:CO_LSSslave_receive	11
+CO_LSSslave.c:374:18:CO_LSSslave_init	10
+CO_LSSslave.c:446:6:CO_LSSslave_initCheckBitRateCallback	2
+CO_LSSslave.c:459:6:CO_LSSslave_initActivateBitRateCallback	2
+CO_LSSslave.c:472:6:CO_LSSslave_initCfgStoreCallback	2
+CO_LSSslave.c:485:6:CO_LSSslave_process	1
+CO_LSSslave.c:501:16:CO_LSSslave_getState	2
+CO_LSSslave.c:512:8:CO_LSSslave_LEDprocess	11

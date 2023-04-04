@@ -1,4 +1,4 @@
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:798:24:CO_getUint32	24	static
+D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h:798:24:CO_getUint32	24	static
 ../Core/Src/cia/301/CO_SYNC.c:40:13:CO_SYNC_receive	32	static
 ../Core/Src/cia/301/CO_SYNC.c:87:27:CO_ODF_1005	56	static
 ../Core/Src/cia/301/CO_SYNC.c:172:27:CO_ODF_1006	32	static

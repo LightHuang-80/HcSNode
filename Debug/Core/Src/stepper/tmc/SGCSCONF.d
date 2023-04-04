@@ -30,9 +30,9 @@ Core/Src/stepper/tmc/SGCSCONF.o: ../Core/Src/stepper/tmc/SGCSCONF.cpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/SERIAL_SWITCH.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC_platforms.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC_platforms.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/SERIAL_SWITCH.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h \
  ../Core/Src/stepper/tmc/TMC2130_bitfields.h \
  ../Core/Src/stepper/tmc/TMC2160_bitfields.h \
  ../Core/Src/stepper/tmc/TMC5130_bitfields.h \
@@ -74,9 +74,9 @@ Core/Src/stepper/tmc/SGCSCONF.o: ../Core/Src/stepper/tmc/SGCSCONF.cpp \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/SERIAL_SWITCH.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC_platforms.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC_platforms.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/SERIAL_SWITCH.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h:
 ../Core/Src/stepper/tmc/TMC2130_bitfields.h:
 ../Core/Src/stepper/tmc/TMC2160_bitfields.h:
 ../Core/Src/stepper/tmc/TMC5130_bitfields.h:

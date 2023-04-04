@@ -1,7 +1,7 @@
-D:/projects/hcbot/HcSNode/Core/Src/util/CO_fifo.h:123:20:CO_fifo_reset	16	static
-D:/projects/hcbot/HcSNode/Core/Src/util/CO_fifo.h:143:22:CO_fifo_getSpace	24	static
-D:/projects/hcbot/HcSNode/Core/Src/util/CO_fifo.h:160:22:CO_fifo_getOccupied	24	static
-D:/projects/hcbot/HcSNode/Core/Src/util/CO_fifo.h:282:22:CO_fifo_altGetOccupied	24	static
+D:/projects/hcsnode/Core/Src/util/CO_fifo.h:123:20:CO_fifo_reset	16	static
+D:/projects/hcsnode/Core/Src/util/CO_fifo.h:143:22:CO_fifo_getSpace	24	static
+D:/projects/hcsnode/Core/Src/util/CO_fifo.h:160:22:CO_fifo_getOccupied	24	static
+D:/projects/hcsnode/Core/Src/util/CO_fifo.h:282:22:CO_fifo_altGetOccupied	24	static
 ../Core/Src/cia/301/CO_SDOclient.c:54:13:CO_SDOclient_receive	32	static
 ../Core/Src/cia/301/CO_SDOclient.c:151:18:CO_SDOclient_init	24	static
 ../Core/Src/cia/301/CO_SDOclient.c:201:6:CO_SDOclient_initCallbackPre	24	static

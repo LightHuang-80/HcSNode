@@ -618,6 +618,7 @@ void PosProfile_Start(real32_T distance, real32_T curVel, real32_T targetVel, re
 	rtDW.VelIntegrator_IC_LOADING = 1U;
     rtDW.VelIntegrator_DSTATE = rtU.InitVel;
 
+    /* InitializeConditions for acceleration*/
     rtDW.AcceIntegrator_DSTATE = 0.0F;
 
     /* Reset the ts counter*/
@@ -654,6 +655,9 @@ void PosProfile_StartHalt(real32_T curVel, real32_T maxJerk, real32_T ts)
 	/* InitializeConditions for DiscreteIntegrator: '<S1>/Vel Integrator' */
 	rtDW.VelIntegrator_IC_LOADING = 1U;
     rtDW.VelIntegrator_DSTATE = rtU.InitVel;
+
+    /* InitializeConditions for acceleration*/
+    rtDW.AcceIntegrator_DSTATE = 0.0F;
 
     /* Reset the ts counter*/
     rtDW.t_not_empty = false;

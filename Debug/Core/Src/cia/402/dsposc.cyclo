@@ -1,0 +1,6 @@
+dsposc.c:15:6:DS402_PositionControl_Init	1
+dsposc.c:23:6:DS402_PositionControl_Process	1
+dsposc.c:34:6:DS402_PositionControl_SetTargetPos	1
+dsposc.c:43:9:DS402_PositionControl_GetActualPos	1
+dsposc.c:48:8:DS402_IsVelEffected	1
+dsposc.c:53:6:DS402_PositionControl_SetVelRefs	5

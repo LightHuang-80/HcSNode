@@ -1,0 +1,74 @@
+CHOPCONF.cpp:7:10:uint32_t TMC2130Stepper::CHOPCONF()	1
+CHOPCONF.cpp:10:6:void TMC2130Stepper::CHOPCONF(uint32_t)	1
+CHOPCONF.cpp:15:6:void TMC2130Stepper::toff(uint8_t)	1
+CHOPCONF.cpp:16:6:virtual void TMC2130Stepper::hstrt(uint8_t)	1
+CHOPCONF.cpp:17:6:virtual void TMC2130Stepper::hend(uint8_t)	1
+CHOPCONF.cpp:19:6:void TMC2130Stepper::disfdcc(bool)	1
+CHOPCONF.cpp:20:6:void TMC2130Stepper::rndtf(bool)	1
+CHOPCONF.cpp:21:6:void TMC2130Stepper::chm(bool)	1
+CHOPCONF.cpp:22:6:virtual void TMC2130Stepper::tbl(uint8_t)	1
+CHOPCONF.cpp:23:6:virtual void TMC2130Stepper::vsense(bool)	1
+CHOPCONF.cpp:24:6:void TMC2130Stepper::vhighfs(bool)	1
+CHOPCONF.cpp:25:6:void TMC2130Stepper::vhighchm(bool)	1
+CHOPCONF.cpp:26:6:void TMC2130Stepper::sync(uint8_t)	1
+CHOPCONF.cpp:27:6:virtual void TMC2130Stepper::mres(uint8_t)	1
+CHOPCONF.cpp:28:6:void TMC2130Stepper::intpol(bool)	1
+CHOPCONF.cpp:29:6:void TMC2130Stepper::dedge(bool)	1
+CHOPCONF.cpp:30:6:void TMC2130Stepper::diss2g(bool)	1
+CHOPCONF.cpp:32:9:uint8_t TMC2130Stepper::toff()	1
+CHOPCONF.cpp:33:9:virtual uint8_t TMC2130Stepper::hstrt()	1
+CHOPCONF.cpp:34:9:virtual uint8_t TMC2130Stepper::hend()	1
+CHOPCONF.cpp:36:7:bool TMC2130Stepper::disfdcc()	1
+CHOPCONF.cpp:37:7:bool TMC2130Stepper::rndtf()	1
+CHOPCONF.cpp:38:7:bool TMC2130Stepper::chm()	1
+CHOPCONF.cpp:39:9:virtual uint8_t TMC2130Stepper::tbl()	1
+CHOPCONF.cpp:40:7:virtual bool TMC2130Stepper::vsense()	1
+CHOPCONF.cpp:41:7:bool TMC2130Stepper::vhighfs()	1
+CHOPCONF.cpp:42:7:bool TMC2130Stepper::vhighchm()	1
+CHOPCONF.cpp:43:9:uint8_t TMC2130Stepper::sync()	1
+CHOPCONF.cpp:44:9:virtual uint8_t TMC2130Stepper::mres()	1
+CHOPCONF.cpp:45:7:bool TMC2130Stepper::intpol()	1
+CHOPCONF.cpp:46:7:bool TMC2130Stepper::dedge()	1
+CHOPCONF.cpp:47:7:bool TMC2130Stepper::diss2g()	1
+CHOPCONF.cpp:49:6:void TMC5160Stepper::diss2vs(bool)	1
+CHOPCONF.cpp:50:6:void TMC5160Stepper::tpfd(uint8_t)	1
+CHOPCONF.cpp:51:6:bool TMC5160Stepper::diss2vs()	1
+CHOPCONF.cpp:52:9:uint8_t TMC5160Stepper::tpfd()	1
+CHOPCONF.cpp:54:6:void TMC2208Stepper::CHOPCONF(uint32_t)	1
+CHOPCONF.cpp:58:10:uint32_t TMC2208Stepper::CHOPCONF()	1
+CHOPCONF.cpp:61:6:void TMC2208Stepper::toff(uint8_t)	1
+CHOPCONF.cpp:62:6:virtual void TMC2208Stepper::hstrt(uint8_t)	1
+CHOPCONF.cpp:63:6:virtual void TMC2208Stepper::hend(uint8_t)	1
+CHOPCONF.cpp:64:6:virtual void TMC2208Stepper::tbl(uint8_t)	1
+CHOPCONF.cpp:65:6:virtual void TMC2208Stepper::vsense(bool)	1
+CHOPCONF.cpp:66:6:virtual void TMC2208Stepper::mres(uint8_t)	1
+CHOPCONF.cpp:67:6:void TMC2208Stepper::intpol(bool)	1
+CHOPCONF.cpp:68:6:void TMC2208Stepper::dedge(bool)	1
+CHOPCONF.cpp:69:6:void TMC2208Stepper::diss2g(bool)	1
+CHOPCONF.cpp:70:6:void TMC2208Stepper::diss2vs(bool)	1
+CHOPCONF.cpp:72:9:uint8_t TMC2208Stepper::toff()	1
+CHOPCONF.cpp:73:9:virtual uint8_t TMC2208Stepper::hstrt()	1
+CHOPCONF.cpp:74:9:virtual uint8_t TMC2208Stepper::hend()	1
+CHOPCONF.cpp:75:9:virtual uint8_t TMC2208Stepper::tbl()	1
+CHOPCONF.cpp:76:7:virtual bool TMC2208Stepper::vsense()	1
+CHOPCONF.cpp:77:9:virtual uint8_t TMC2208Stepper::mres()	1
+CHOPCONF.cpp:78:7:bool TMC2208Stepper::intpol()	1
+CHOPCONF.cpp:79:7:bool TMC2208Stepper::dedge()	1
+CHOPCONF.cpp:80:7:bool TMC2208Stepper::diss2g()	1
+CHOPCONF.cpp:81:7:bool TMC2208Stepper::diss2vs()	1
+CHOPCONF.cpp:85:10:uint32_t TMC2660Stepper::CHOPCONF()	1
+CHOPCONF.cpp:86:6:void TMC2660Stepper::CHOPCONF(uint32_t)	1
+CHOPCONF.cpp:91:6:void TMC2660Stepper::toff(uint8_t)	2
+CHOPCONF.cpp:95:6:void TMC2660Stepper::hstrt(uint8_t)	1
+CHOPCONF.cpp:96:6:void TMC2660Stepper::hend(uint8_t)	1
+CHOPCONF.cpp:97:6:void TMC2660Stepper::hdec(uint8_t)	1
+CHOPCONF.cpp:98:6:void TMC2660Stepper::rndtf(bool)	1
+CHOPCONF.cpp:99:6:void TMC2660Stepper::chm(bool)	1
+CHOPCONF.cpp:100:6:void TMC2660Stepper::tbl(uint8_t)	1
+CHOPCONF.cpp:102:9:uint8_t TMC2660Stepper::toff()	1
+CHOPCONF.cpp:103:9:uint8_t TMC2660Stepper::hstrt()	1
+CHOPCONF.cpp:104:9:uint8_t TMC2660Stepper::hend()	1
+CHOPCONF.cpp:105:9:uint8_t TMC2660Stepper::hdec()	1
+CHOPCONF.cpp:106:6:bool TMC2660Stepper::rndtf()	1
+CHOPCONF.cpp:107:6:bool TMC2660Stepper::chm()	1
+CHOPCONF.cpp:108:9:uint8_t TMC2660Stepper::tbl()	1

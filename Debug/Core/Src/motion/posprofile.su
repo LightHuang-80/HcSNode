@@ -14,6 +14,6 @@
 ../Core/Src/motion/posprofile.c:503:6:PosProfile_Prepare	48	static
 ../Core/Src/motion/posprofile.c:572:6:PosProfile_Initialize	8	static
 ../Core/Src/motion/posprofile.c:598:6:PosProfile_Start	40	static
-../Core/Src/motion/posprofile.c:635:6:PosProfile_StartHalt	24	static
-../Core/Src/motion/posprofile.c:673:10:PosProfile_GetTargetPos	4	static
-../Core/Src/motion/posprofile.c:678:11:PosProfile_StepOver	16	static
+../Core/Src/motion/posprofile.c:636:6:PosProfile_StartHalt	24	static
+../Core/Src/motion/posprofile.c:677:10:PosProfile_GetTargetPos	4	static
+../Core/Src/motion/posprofile.c:682:11:PosProfile_StepOver	16	static

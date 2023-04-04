@@ -91,13 +91,11 @@ void HOME_finish(int32_t position)
 		}
 	}
 
-	MT_setReachCallback(NULL);
 }
 
 void HOME_active()
 {
-	MT_setReachCallback(HOME_finish);
-	MT_setReachWindow(g_MotorHomeData.reachWindow);
+
 }
 
 /*Re-enter safe function
@@ -165,7 +163,6 @@ void HOME_OnSwitchSignal(uint16_t pin)
 	if (g_MotorHomeData.status != DS402_HOME_GoHome && g_MotionMsgQueue != NULL){
 
 		/*Reset the callback*/
-		MT_setReachCallback(HOME_finish);
 
 		/*Send go home message*/
 		MotionMsgItem_t item;

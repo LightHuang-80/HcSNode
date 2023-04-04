@@ -1,7 +1,7 @@
 Core/Src/cia/CANopen.o: ../Core/Src/cia/CANopen.c \
  ../Core/Src/cia/CANopen.h ../Core/Src/cia/301/CO_driver.h \
  ../Core/Src/cia/301/CO_config.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h \
+ D:/projects/hcsnode/Core/Src/cia/board/CO_driver_target.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -34,15 +34,15 @@ Core/Src/cia/CANopen.o: ../Core/Src/cia/CANopen.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Src/cia/301/CO_SDOserver.h ../Core/Src/cia/301/CO_Emergency.h \
  ../Core/Src/cia/301/CO_NMT_Heartbeat.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_Emergency.h \
+ D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h \
+ D:/projects/hcsnode/Core/Src/cia/301/CO_Emergency.h \
  ../Core/Src/cia/301/CO_SYNC.h ../Core/Src/cia/301/CO_TIME.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h \
+ D:/projects/hcsnode/Core/Src/cia/board/CO_OD.h \
  ../Core/Src/cia/301/CO_PDO.h ../Core/Src/cia/301/CO_HBconsumer.h
 ../Core/Src/cia/CANopen.h:
 ../Core/Src/cia/301/CO_driver.h:
 ../Core/Src/cia/301/CO_config.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h:
+D:/projects/hcsnode/Core/Src/cia/board/CO_driver_target.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -76,10 +76,10 @@ D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h:
 ../Core/Src/cia/301/CO_SDOserver.h:
 ../Core/Src/cia/301/CO_Emergency.h:
 ../Core/Src/cia/301/CO_NMT_Heartbeat.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_Emergency.h:
+D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h:
+D:/projects/hcsnode/Core/Src/cia/301/CO_Emergency.h:
 ../Core/Src/cia/301/CO_SYNC.h:
 ../Core/Src/cia/301/CO_TIME.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h:
+D:/projects/hcsnode/Core/Src/cia/board/CO_OD.h:
 ../Core/Src/cia/301/CO_PDO.h:
 ../Core/Src/cia/301/CO_HBconsumer.h:

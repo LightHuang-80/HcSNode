@@ -1,0 +1,2 @@
+SERIAL_SWITCH.cpp:3:1:SSwitch::SSwitch(uint16_t, uint16_t, uint8_t)	1
+SERIAL_SWITCH.cpp:10:6:void SSwitch::active()	1

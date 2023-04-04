@@ -1,0 +1,8 @@
+freertos.cpp:210:6:void MX_FREERTOS_Init()	1
+freertos.cpp:266:6:void DefaultTaskMain(void*)	1
+freertos.cpp:285:6:void LedTaskMain(void*)	6
+freertos.cpp:315:6:void EncoderTaskMain(void*)	6
+freertos.cpp:372:6:void MotionTaskMain(void*)	1
+freertos.cpp:450:6:void CanCommTaskMain(void*)	4
+freertos.cpp:489:1:void __static_initialization_and_destruction_0(int, int)	3
+freertos.cpp:489:1:cpp)	1

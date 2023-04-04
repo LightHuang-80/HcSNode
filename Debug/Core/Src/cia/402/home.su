@@ -3,6 +3,6 @@
 ../Core/Src/cia/402/home.c:68:6:HOME_Init	32	static
 ../Core/Src/cia/402/home.c:80:6:HOME_setFinishedCallback	16	static
 ../Core/Src/cia/402/home.c:85:6:HOME_finish	16	static
-../Core/Src/cia/402/home.c:97:6:HOME_active	8	static
-../Core/Src/cia/402/home.c:107:10:HOME_exec	40	static
-../Core/Src/cia/402/home.c:159:6:HOME_OnSwitchSignal	40	static,ignoring_inline_asm
+../Core/Src/cia/402/home.c:96:6:HOME_active	4	static
+../Core/Src/cia/402/home.c:105:10:HOME_exec	40	static
+../Core/Src/cia/402/home.c:157:6:HOME_OnSwitchSignal	40	static,ignoring_inline_asm

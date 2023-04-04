@@ -11,12 +11,12 @@ Core/Src/motion/trajectory.o: ../Core/Src/motion/trajectory.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- ../Core/Inc/profile.h ../Core/Inc/PosProfile.h ../Core/Inc/rtwtypes.h \
- ../Core/Inc/PIDProfile.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_config.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h \
+ ../Core/Inc/profile.h ../Core/Inc/motiondef.h ../Core/Inc/PosProfile.h \
+ ../Core/Inc/rtwtypes.h ../Core/Inc/PIDProfile.h \
+ D:/projects/hcsnode/Core/Src/cia/402/c402.h \
+ D:/projects/hcsnode/Core/Src/cia/301/CO_driver.h \
+ D:/projects/hcsnode/Core/Src/cia/301/CO_config.h \
+ D:/projects/hcsnode/Core/Src/cia/board/CO_driver_target.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -47,8 +47,8 @@ Core/Src/motion/trajectory.o: ../Core/Src/motion/trajectory.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h ../Core/Inc/log.h \
+ D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h \
+ D:/projects/hcsnode/Core/Src/cia/board/CO_OD.h ../Core/Inc/log.h \
  ../Core/Inc/mcdrv.h
 ../Core/Inc/interpolation.h:
 ../Core/Inc/nmotion.h:
@@ -64,13 +64,14 @@ Core/Src/motion/trajectory.o: ../Core/Src/motion/trajectory.c \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../Core/Inc/profile.h:
+../Core/Inc/motiondef.h:
 ../Core/Inc/PosProfile.h:
 ../Core/Inc/rtwtypes.h:
 ../Core/Inc/PIDProfile.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/402/c402.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_config.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h:
+D:/projects/hcsnode/Core/Src/cia/402/c402.h:
+D:/projects/hcsnode/Core/Src/cia/301/CO_driver.h:
+D:/projects/hcsnode/Core/Src/cia/301/CO_config.h:
+D:/projects/hcsnode/Core/Src/cia/board/CO_driver_target.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -101,7 +102,7 @@ D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h:
+D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h:
+D:/projects/hcsnode/Core/Src/cia/board/CO_OD.h:
 ../Core/Inc/log.h:
 ../Core/Inc/mcdrv.h:

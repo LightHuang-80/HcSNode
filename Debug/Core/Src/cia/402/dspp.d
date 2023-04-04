@@ -1,4 +1,4 @@
-Core/Src/cia/402/dspp.o: ../Core/Src/cia/402/dspp.c \
+Core/Src/cia/402/dspp.o: ../Core/Src/cia/402/dspp.cpp \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -9,10 +9,10 @@ Core/Src/cia/402/dspp.o: ../Core/Src/cia/402/dspp.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- ../Core/Src/cia/402/c402.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_config.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h \
+ ../Core/Inc/log.h ../Core/Src/cia/402/c402.h \
+ D:/projects/hcsnode/Core/Src/cia/301/CO_driver.h \
+ D:/projects/hcsnode/Core/Src/cia/301/CO_config.h \
+ D:/projects/hcsnode/Core/Src/cia/board/CO_driver_target.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -43,13 +43,25 @@ Core/Src/cia/402/dspp.o: ../Core/Src/cia/402/dspp.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h \
- D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h \
- ../Core/Src/cia/402/c402def.h ../Core/Src/cia/402/dspp.h \
- ../Core/Src/cia/402/dsposc.h ../Core/Inc/nmotion.h \
- ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- ../Core/Inc/profile.h ../Core/Inc/PosProfile.h ../Core/Inc/rtwtypes.h \
- ../Core/Inc/PIDProfile.h ../Core/Inc/log.h
+ D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h \
+ D:/projects/hcsnode/Core/Src/cia/board/CO_OD.h \
+ ../Core/Src/cia/402/c402def.h ../Core/Inc/PosProfile.h \
+ ../Core/Inc/rtwtypes.h ../Core/Inc/PIDProfile.h ../Core/Inc/motiondef.h \
+ ../Core/Inc/motor.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMCStepper.h \
+ ../Core/Inc/fserial.h ../Core/Inc/arduio.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/SERIAL_SWITCH.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2130_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2160_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC5130_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC5160_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2208_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2209_bitfields.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2660_bitfields.h \
+ ../Core/Inc/nstepper.h ../Core/Inc/planner.h ../Core/Inc/message.h \
+ ../Core/Src/cia/402/dspp.h ../Core/Src/cia/402/dsposc.h
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -60,10 +72,11 @@ Core/Src/cia/402/dspp.o: ../Core/Src/cia/402/dspp.c \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/queue.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
+../Core/Inc/log.h:
 ../Core/Src/cia/402/c402.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_driver.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_config.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h:
+D:/projects/hcsnode/Core/Src/cia/301/CO_driver.h:
+D:/projects/hcsnode/Core/Src/cia/301/CO_config.h:
+D:/projects/hcsnode/Core/Src/cia/board/CO_driver_target.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -94,15 +107,29 @@ D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_driver_target.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:
-D:/projects/hcbot/HcSNode/Core/Src/cia/board/CO_OD.h:
+D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h:
+D:/projects/hcsnode/Core/Src/cia/board/CO_OD.h:
 ../Core/Src/cia/402/c402def.h:
-../Core/Src/cia/402/dspp.h:
-../Core/Src/cia/402/dsposc.h:
-../Core/Inc/nmotion.h:
-../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
-../Core/Inc/profile.h:
 ../Core/Inc/PosProfile.h:
 ../Core/Inc/rtwtypes.h:
 ../Core/Inc/PIDProfile.h:
-../Core/Inc/log.h:
+../Core/Inc/motiondef.h:
+../Core/Inc/motor.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMCStepper.h:
+../Core/Inc/fserial.h:
+../Core/Inc/arduio.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/SERIAL_SWITCH.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2130_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2160_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC5130_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC5160_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2208_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2209_bitfields.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC2660_bitfields.h:
+../Core/Inc/nstepper.h:
+../Core/Inc/planner.h:
+../Core/Inc/message.h:
+../Core/Src/cia/402/dspp.h:
+../Core/Src/cia/402/dsposc.h:

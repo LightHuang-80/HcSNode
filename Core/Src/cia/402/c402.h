@@ -12,7 +12,7 @@
 #include "301/CO_SDOserver.h"
 #include "CO_OD.h"
 
-struct sOD_Cia402_RAM {
+typedef struct sOD_Cia402_RAM_ {
 	UNSIGNED32     FirstWord;
 
 /*6093h*/ UNSIGNED32 position_factor[2];         //position_factor = numerator/divisor = Gear ratio * Increments/Rotation / Feed Constant
@@ -66,13 +66,14 @@ corrected max position limit = max position limit - home offset
 /*609Ah*/ UNSIGNED32 homing_acceleration;
 
 UNSIGNED32     LastWord;
-};
+}SOD_Cia402_RAM;
 
-extern struct sOD_Cia402_RAM CO_C402_Params;
+extern SOD_Cia402_RAM CO_C402_Params;
 
 typedef struct MotionCtrlDrv_ {
-	uint16_t controlWord;   // 0x6040  control
-	uint16_t statusWord;    // 0x6041  status
+
+	volatile uint16_t controlWord;   // 0x6040  control
+	volatile uint16_t statusWord;    // 0x6041  status
 
 	int32_t  currentPos;    // 0x6063  current pos
 	int32_t  currentVel;    // 0x606C  current pos
@@ -94,6 +95,7 @@ typedef struct MotionCtrlDrv_ {
 	int8_t   displayMode;   // 0x6061  display mode
 
 	int8_t   homemethod;	// 0x6098
+
 }MotionCtrlDef_t;
 
 /*Motor message code*/

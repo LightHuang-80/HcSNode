@@ -1,0 +1,52 @@
+TMCStepper.h:117:3:TMCStepper::TMCStepper(float)	1
+TMC2130Stepper.cpp:7:1:TMC2130Stepper::TMC2130Stepper(uint16_t, float, int8_t)	2
+TMC2130Stepper.cpp:18:1:TMC2130Stepper::TMC2130Stepper(uint16_t, uint16_t, uint16_t, uint16_t, int8_t)	2
+TMC2130Stepper.cpp:31:1:TMC2130Stepper::TMC2130Stepper(uint16_t, float, uint16_t, uint16_t, uint16_t, int8_t)	2
+TMC2130Stepper.cpp:44:6:void TMC2130Stepper::defaults()	1
+TMC2130Stepper.cpp:58:6:void TMC2130Stepper::setSPISpeed(uint32_t)	1
+TMC2130Stepper.cpp:63:6:void TMC2130Stepper::switchCSpin(bool)	2
+TMC2130Stepper.cpp:71:6:void TMC2130Stepper::beginTransaction()	1
+TMC2130Stepper.cpp:77:6:void TMC2130Stepper::endTransaction()	1
+TMC2130Stepper.cpp:84:9:uint8_t TMC2130Stepper::transfer(uint8_t)	2
+TMC2130Stepper.cpp:95:6:void TMC2130Stepper::transferEmptyBytes(uint8_t)	2
+TMC2130Stepper.cpp:102:10:virtual uint32_t TMC2130Stepper::read(uint8_t)	3
+TMC2130Stepper.cpp:144:6:virtual void TMC2130Stepper::write(uint8_t, uint32_t)	2
+TMC2130Stepper.cpp:167:6:void TMC2130Stepper::begin()	2
+TMC2130Stepper.cpp:189:6:bool TMC2130Stepper::isEnabled()	3
+TMC2130Stepper.cpp:191:6:void TMC2130Stepper::push()	1
+TMC2130Stepper.cpp:209:11:uint32_t TMC2130Stepper::IOIN()	1
+TMC2130Stepper.cpp:210:6:bool TMC2130Stepper::step()	1
+TMC2130Stepper.cpp:211:6:bool TMC2130Stepper::dir()	1
+TMC2130Stepper.cpp:212:6:bool TMC2130Stepper::dcen_cfg4()	1
+TMC2130Stepper.cpp:213:6:bool TMC2130Stepper::dcin_cfg5()	1
+TMC2130Stepper.cpp:214:6:bool TMC2130Stepper::drv_enn_cfg6()	1
+TMC2130Stepper.cpp:215:6:bool TMC2130Stepper::dco()	1
+TMC2130Stepper.cpp:216:9:uint8_t TMC2130Stepper::version()	1
+TMC2130Stepper.cpp:219:10:uint32_t TMC2130Stepper::TCOOLTHRS()	1
+TMC2130Stepper.cpp:220:6:void TMC2130Stepper::TCOOLTHRS(uint32_t)	1
+TMC2130Stepper.cpp:226:10:uint32_t TMC2130Stepper::THIGH()	1
+TMC2130Stepper.cpp:227:6:void TMC2130Stepper::THIGH(uint32_t)	1
+TMC2130Stepper.cpp:233:10:uint32_t TMC2130Stepper::XDIRECT()	1
+TMC2130Stepper.cpp:236:6:void TMC2130Stepper::XDIRECT(uint32_t)	1
+TMC2130Stepper.cpp:240:6:void TMC2130Stepper::coil_A(int16_t)	1
+TMC2130Stepper.cpp:241:6:void TMC2130Stepper::coil_B(int16_t)	1
+TMC2130Stepper.cpp:242:9:int16_t TMC2130Stepper::coil_A()	1
+TMC2130Stepper.cpp:243:9:int16_t TMC2130Stepper::coil_B()	1
+TMC2130Stepper.cpp:246:10:uint32_t TMC2130Stepper::VDCMIN()	1
+TMC2130Stepper.cpp:247:6:void TMC2130Stepper::VDCMIN(uint32_t)	1
+TMC2130Stepper.cpp:253:6:void TMC2130Stepper::DCCTRL(uint32_t)	1
+TMC2130Stepper.cpp:257:6:void TMC2130Stepper::dc_time(uint16_t)	1
+TMC2130Stepper.cpp:261:6:void TMC2130Stepper::dc_sg(uint8_t)	1
+TMC2130Stepper.cpp:266:10:uint32_t TMC2130Stepper::DCCTRL()	1
+TMC2130Stepper.cpp:269:10:uint16_t TMC2130Stepper::dc_time()	1
+TMC2130Stepper.cpp:274:9:uint8_t TMC2130Stepper::dc_sg()	1
+TMC2130Stepper.cpp:281:9:uint8_t TMC2130Stepper::PWM_SCALE()	1
+TMC2130Stepper.cpp:284:9:uint8_t TMC2130Stepper::ENCM_CTRL()	1
+TMC2130Stepper.cpp:285:6:void TMC2130Stepper::ENCM_CTRL(uint8_t)	1
+TMC2130Stepper.cpp:289:6:void TMC2130Stepper::inv(bool)	1
+TMC2130Stepper.cpp:290:6:void TMC2130Stepper::maxspeed(bool)	1
+TMC2130Stepper.cpp:291:6:bool TMC2130Stepper::inv()	1
+TMC2130Stepper.cpp:292:6:bool TMC2130Stepper::maxspeed()	1
+TMC2130Stepper.cpp:295:10:uint32_t TMC2130Stepper::LOST_STEPS()	1
+TMC2130Stepper.cpp:297:6:void TMC2130Stepper::sg_current_decrease(uint8_t)	5
+TMC2130Stepper.cpp:305:9:uint8_t TMC2130Stepper::sg_current_decrease()	5

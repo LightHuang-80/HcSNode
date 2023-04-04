@@ -1,0 +1,12 @@
+TMCStepper.h:722:8:void TMC5160Stepper::rms_current(uint16_t)	1
+TMCStepper.h:724:12:uint16_t TMC5160Stepper::rms_current()	1
+message.cpp:123:6:void convertExpressToParam(char*, size_t, Msg_Param_t*)	11
+message.cpp:170:8:size_t parseMsg(Joint_Msg_t*, char*, size_t, Msg_Param_t*)	11
+message.cpp:208:6:void JNT_dbgOutput(char*, size_t)	1
+message.cpp:229:6:void JNT_handleSimpleMsg(Joint_Msg_t*)	5
+message.cpp:246:6:void JNT_handleComplexMsg(Joint_Msg_t*, char*, size_t)	39
+message.cpp:403:6:void JNT_handleFlashMsg(Joint_Msg_t*, char*, size_t)	1
+message.cpp:408:6:void JNT_processMsg()	8
+message.cpp:444:6:void JNT_flushTMCStatus()	4
+message.cpp:477:6:void JNT_flushStepperProcessStatus()	3
+message.cpp:515:6:void JNT_registerDriver(TMC5160Stepper*)	1

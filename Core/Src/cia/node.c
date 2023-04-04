@@ -48,7 +48,7 @@ void NODE_NMTCallback(CO_NMT_internalState_t state)
 	printf("Node NM state(%d): %s\n", state, NmtState2Str(state));
 	if (state == CO_NMT_OPERATIONAL){
 		/*Reset motion*/
-		MT_Reset();
+		MT_reset();
 
 		/*Reset motion controller*/
 		MCD_reset(&g_MotionCtrl);
@@ -61,7 +61,7 @@ void NODE_NMTCallback(CO_NMT_internalState_t state)
 void NODE_OnMasterHBTimeoutCallback(uint8_t nodeId, uint8_t idx, void *object)
 {
 	printf("Lost communication with master.\n");
-	MT_Reset();
+	MT_reset();
 
 	MCD_reset(&g_MotionCtrl);
 

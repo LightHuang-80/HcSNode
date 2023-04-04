@@ -1,5 +1,5 @@
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMCStepper.h:722:8:void TMC5160Stepper::rms_current(uint16_t)	16	static
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMCStepper.h:724:12:uint16_t TMC5160Stepper::rms_current()	16	static
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMCStepper.h:722:8:void TMC5160Stepper::rms_current(uint16_t)	16	static
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMCStepper.h:724:12:uint16_t TMC5160Stepper::rms_current()	16	static
 ../Core/Src/message/message.cpp:123:6:void convertExpressToParam(char*, size_t, Msg_Param_t*)	48	static
 ../Core/Src/message/message.cpp:170:8:size_t parseMsg(Joint_Msg_t*, char*, size_t, Msg_Param_t*)	104	static
 ../Core/Src/message/message.cpp:208:6:void JNT_dbgOutput(char*, size_t)	24	static

@@ -1,0 +1,8 @@
+CANopen.c:116:18:CO_new	21
+CANopen.c:268:6:CO_delete	5
+CANopen.c:504:18:CO_CANinit	1
+CANopen.c:556:18:CO_CANopenInit	18
+CANopen.c:803:20:CO_process	4
+CANopen.c:865:8:CO_process_SYNC	5
+CANopen.c:893:6:CO_process_RPDO	2
+CANopen.c:905:6:CO_process_TPDO	3

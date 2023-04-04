@@ -1,6 +1,6 @@
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:798:24:CO_getUint32	24	static
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:811:20:CO_setUint16	16	static
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:822:20:CO_setUint32	16	static
+D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h:798:24:CO_getUint32	24	static
+D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h:811:20:CO_setUint16	16	static
+D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h:822:20:CO_setUint32	16	static
 ../Core/Src/cia/305/CO_LSSmaster.c:77:13:CO_LSSmaster_receive	32	static
 ../Core/Src/cia/305/CO_LSSmaster.c:117:30:CO_LSSmaster_check_timeout	24	static
 ../Core/Src/cia/305/CO_LSSmaster.c:134:18:CO_LSSmaster_init	48	static

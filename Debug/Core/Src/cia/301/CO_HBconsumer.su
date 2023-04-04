@@ -1,4 +1,4 @@
-D:/projects/hcbot/HcSNode/Core/Src/cia/301\CO_SDOserver.h:798:24:CO_getUint32	24	static
+D:/projects/hcsnode/Core/Src/cia/301\CO_SDOserver.h:798:24:CO_getUint32	24	static
 ../Core/Src/cia/301/CO_HBconsumer.c:39:13:CO_HBcons_receive	32	static
 ../Core/Src/cia/301/CO_HBconsumer.c:67:27:CO_ODF_1016	32	static
 ../Core/Src/cia/301/CO_HBconsumer.c:97:18:CO_HBconsumer_init	40	static

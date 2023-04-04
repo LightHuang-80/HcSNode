@@ -17,9 +17,15 @@ typedef enum DS402_PP_Status_ {
 	DS402_PP_Error,
 }DS402_PP_Status_t;
 
-void PP_Init();
-void PP_setSpeed(uint32_t speed);
-void PP_OnTargetReached(int32_t position);
-void PP_active(uint16_t controlWord);
-uint16_t PP_exec(uint16_t controlWord);
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+void PP_init();
+void PP_active();
+uint16_t PP_exec(uint16_t controlWord, uint8_t newSetPoint);
+void PP_process(uint32_t ticks);
+#ifdef __cplusplus
+}
+#endif
 #endif /* DSPP_H_ */

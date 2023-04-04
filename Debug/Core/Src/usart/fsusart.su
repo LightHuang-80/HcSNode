@@ -1,4 +1,4 @@
-D:/projects/hcbot/HcSNode/Core/Src/util/CO_fifo.h:160:22:size_t CO_fifo_getOccupied(CO_fifo_t*)	24	static
+D:/projects/hcsnode/Core/Src/util/CO_fifo.h:160:22:size_t CO_fifo_getOccupied(CO_fifo_t*)	24	static
 ../Core/Src/usart/fsusart.cpp:51:6:void FUART_Init()	8	static
 ../Core/Src/usart/fsusart.cpp:60:6:void FUART_beginReceive(UART_HandleTypeDef*)	16	static
 ../Core/Src/usart/fsusart.cpp:65:6:void FUART_pushMsgToFifo(Joint_Msg_t*, uint8_t*, size_t, CO_fifo_t*)	24	static

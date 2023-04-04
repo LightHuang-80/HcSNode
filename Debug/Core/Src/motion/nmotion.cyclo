@@ -1,0 +1,9 @@
+nmotion.cpp:51:6:void MT_reset()	1
+nmotion.cpp:60:6:void MT_begin()	1
+nmotion.cpp:66:6:void MT_loop(uint32_t)	1
+nmotion.cpp:78:6:void MT_setProfile(Node_DriveProfile_t*)	1
+nmotion.cpp:84:6:void MT_init()	1
+nmotion.cpp:95:8:int8_t MT_getMode()	1
+nmotion.cpp:100:6:void MT_setMode(int8_t)	2
+nmotion.cpp:110:6:void MT_exec(uint16_t)	4
+nmotion.cpp:123:6:void MT_process_v3(uint32_t)	2

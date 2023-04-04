@@ -30,9 +30,9 @@ Core/Src/serial/sw_spi.o: ../Core/Src/serial/sw_spi.cpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Inc/fserial.h ../Core/Inc/arduio.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/SERIAL_SWITCH.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC_platforms.h \
- D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC_platforms.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/SERIAL_SWITCH.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h \
+ D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h \
  ../Core/Inc/spi.h ../Core/Inc/main.h
 ../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
@@ -67,8 +67,8 @@ Core/Src/serial/sw_spi.o: ../Core/Src/serial/sw_spi.cpp \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
 ../Core/Inc/fserial.h:
 ../Core/Inc/arduio.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/SERIAL_SWITCH.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC_platforms.h:
-D:/projects/hcbot/HcSNode/Core/Src/stepper/tmc/TMC_platforms.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/SERIAL_SWITCH.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h:
+D:/projects/hcsnode/Core/Src/stepper/tmc/TMC_platforms.h:
 ../Core/Inc/spi.h:
 ../Core/Inc/main.h:

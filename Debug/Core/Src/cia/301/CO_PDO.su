@@ -1,6 +1,6 @@
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:785:24:CO_getUint16	24	static
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:798:24:CO_getUint32	24	static
-D:/projects/hcbot/HcSNode/Core/Src/cia/301/CO_SDOserver.h:822:20:CO_setUint32	16	static
+D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h:785:24:CO_getUint16	24	static
+D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h:798:24:CO_getUint32	24	static
+D:/projects/hcsnode/Core/Src/cia/301/CO_SDOserver.h:822:20:CO_setUint32	16	static
 ../Core/Src/cia/301/CO_PDO.c:47:13:CO_PDO_receive	32	static
 ../Core/Src/cia/301/CO_PDO.c:91:13:CO_RPDOconfigCom	40	static
 ../Core/Src/cia/301/CO_PDO.c:146:13:CO_TPDOconfigCom	48	static
